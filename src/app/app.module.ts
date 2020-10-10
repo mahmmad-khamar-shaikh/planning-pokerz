@@ -7,6 +7,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+
+/** Angular Fire / FireBase Dependency  */
+
+import { AngularFireModule } from '@angular/fire';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,6 +20,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'aungular-auth-firebase'),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NoopAnimationsModule
   ],
