@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: 'AIzaSyDGHpIpnVq_9IeSXOOu01VDLmjiYWQhhtw',
-    authDomain: 'planning-pokerz.firebaseapp.com',
-    databaseURL: 'https://planning-pokerz.firebaseio.com',
-    projectId: 'planning-pokerz',
-    storageBucket: 'planning-pokerz.appspot.com',
-    messagingSenderId: '838528997683',
-    appId: '1:838528997683:web:9eba002a24ff69c86d4646',
-    measurementId: 'G-JQPFC1XCL8'
+    apiKey: '****************************',
+    authDomain: '****************************',
+    databaseURL: '****************************',
+    projectId: '****************************',
+    storageBucket: '****************************',
+    messagingSenderId: '****************************',
+    appId: '****************************',
+    measurementId: '****************************'
   }
 };
 
