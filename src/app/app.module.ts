@@ -19,6 +19,9 @@ import { AppMaterialModule } from './app-material.module';
 import { LoginContainerComponent } from './components/login-container/login-container.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AvtarComponent } from './components/avtar/avtar.component';
+import { TeamComponent } from './components/team/team.component';
+import { CeremonyComponent } from './components/ceremony/ceremony.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     DashboardComponent,
     LoginContainerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AvtarComponent,
+    TeamComponent,
+    CeremonyComponent
   ],
   imports: [
     BrowserModule,
