@@ -15,7 +15,8 @@ const loginScreenChildren: Routes = [
 const homeScreenChildren: Routes = [
   { path: 'avtar', component: AvtarComponent },
   { path: 'team', component: TeamComponent },
-  { path: 'cermony', component: CeremonyComponent },
+  { path: 'ceremony', component: CeremonyComponent },
+  { path: '', redirectTo: 'team', pathMatch: 'full' }
 ];
 
 const routes: Routes = [
