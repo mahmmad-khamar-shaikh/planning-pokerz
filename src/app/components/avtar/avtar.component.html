@@ -4,17 +4,17 @@
             <form [formGroup]="avtarForm">
                 <mat-form-field>
                     <input matInput placeholder="Display Name" formControlName="displayName" required>
-                    <mat-error *ngIf="isFieldInvalid('userName')">
+                    <mat-error *ngIf="isFieldInvalid('displayName')">
                         Please enter Display Name
                     </mat-error>
                 </mat-form-field>
             </form>
         </mat-card-content>
-        <mat-card-footer>
-            <button mat-button color="primary">
+        <mat-card-footer align="center">
+            <button mat-button color="primary" (click)="toDashboard(false)">
         Join
       </button>
-            <button mat-button color="accent">
+            <button mat-button color="accent" (click)="toDashboard(true)">
         Join as Host
       </button>
         </mat-card-footer>
