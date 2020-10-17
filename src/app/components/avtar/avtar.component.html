@@ -1,1 +1,22 @@
-<p>avtar works!</p>
+<div class="avtar-center">
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="avtarForm">
+                <mat-form-field>
+                    <input matInput placeholder="Display Name" formControlName="displayName" required>
+                    <mat-error *ngIf="isFieldInvalid('userName')">
+                        Please enter Display Name
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-footer>
+            <button mat-button color="primary">
+        Join
+      </button>
+            <button mat-button color="accent">
+        Join as Host
+      </button>
+        </mat-card-footer>
+    </mat-card>
+</div>

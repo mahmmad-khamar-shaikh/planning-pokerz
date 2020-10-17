@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   public isError = false;
   public customErrorMessage: string;
-  form: FormGroup;                    // {1}
   private formSubmitAttempt: boolean; // {2}
 
   constructor(
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.form = this.formBuilder.group({     // {5}
+    this.loginFormGroup = this.formBuilder.group({     // {5}
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
@@ -29,8 +28,8 @@ export class LoginComponent implements OnInit {
   }
   isFieldInvalid(field: string): boolean { // {6}
     return (
-      (!this.form.get(field).valid && this.form.get(field).touched) ||
-      (this.form.get(field).untouched && this.formSubmitAttempt)
+      (!this.loginFormGroup.get(field).valid && this.loginFormGroup.get(field).touched) ||
+      (this.loginFormGroup.get(field).untouched && this.formSubmitAttempt)
     );
   }
   login(): void {
