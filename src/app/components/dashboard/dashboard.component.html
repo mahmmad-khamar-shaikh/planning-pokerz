@@ -1,1 +1,56 @@
- Welcome {{userName}}, you are logged in as {{role}} !
+<div class="dashboard">
+    <mat-card matRipple (click)="cardSelection(2)">
+        <mat-card-content>
+            2
+        </mat-card-content>
+    </mat-card>
+    <mat-card matRipple (click)="cardSelection(3)">
+        <mat-card-content>
+            3
+        </mat-card-content>
+    </mat-card>
+    <mat-card matRipple (click)="cardSelection(5)">
+        <mat-card-content>
+            5
+        </mat-card-content>
+    </mat-card>
+    <mat-card matRipple (click)="cardSelection(8)">
+        <mat-card-content>
+            8
+        </mat-card-content>
+    </mat-card>
+    <mat-card matRipple (click)="cardSelection(13)">
+        <mat-card-content>
+            13
+        </mat-card-content>
+    </mat-card>
+
+
+
+</div>
+<div class="dashboard">
+    <mat-card matRipple (click)="cardSelection('all_inclusive')">
+        <mat-card-content>
+            <mat-icon>all_inclusive</mat-icon>
+        </mat-card-content>
+    </mat-card>
+    <mat-card matRipple (click)="cardSelection('?')">
+        <mat-card-content>
+            ?
+        </mat-card-content>
+    </mat-card>
+    <mat-card matRipple (click)="cardSelection(0)">
+        <mat-card-content>
+            0
+        </mat-card-content>
+    </mat-card>
+
+</div>
+<div class="dashboard">
+
+    <div>
+        <button mat-raised-button color="primary">    You selected : {{cardValue}}
+
+    </button>
+    </div>
+</div>
