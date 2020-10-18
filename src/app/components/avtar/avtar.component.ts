@@ -35,7 +35,9 @@ export class AvtarComponent implements OnInit {
       name: this.avtarForm.get('displayName').value
     };
     this.loginService.user = userObject;
-    this.router.navigate(['/home/dashboard']);
+    if (isHost) {
+      this.router.navigate(['/home/dashboard-admin']);
+    } else { this.router.navigate(['/home/dashboard']); }
 
   }
 

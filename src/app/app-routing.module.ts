@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AvtarComponent } from './components/avtar/avtar.component';
 import { CeremonyComponent } from './components/ceremony/ceremony.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -18,6 +19,7 @@ const homeScreenChildren: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'ceremony', component: CeremonyComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard-admin', component: AdminDashboardComponent },
   { path: '', redirectTo: 'team', pathMatch: 'full' }
 ];
 

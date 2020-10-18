@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AvtarComponent } from './components/avtar/avtar.component';
 import { TeamComponent } from './components/team/team.component';
 import { CeremonyComponent } from './components/ceremony/ceremony.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CeremonyComponent } from './components/ceremony/ceremony.component';
     PageNotFoundComponent,
     AvtarComponent,
     TeamComponent,
-    CeremonyComponent
+    CeremonyComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
