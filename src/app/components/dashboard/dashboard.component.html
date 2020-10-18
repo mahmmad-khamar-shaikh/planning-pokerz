@@ -1,4 +1,10 @@
 <div class="dashboard">
+    <button mat-raised-button>
+    Story {{storyNumber}}
+  </button>
+</div>
+
+<div class="dashboard">
     <mat-card matRipple (click)="cardSelection(2)">
         <mat-card-content>
             2
@@ -47,10 +53,14 @@
 
 </div>
 <div class="dashboard">
+    <div [ngSwitch]="cardValue.type">
+        <div *ngSwitchCase="'all_inclusive'">
+            <button mat-raised-button color="primary"> I am NOT sure !</button>
+        </div>
+        <div *ngSwitchCase="'?'">
+            <button mat-raised-button color="primary"> I still have a doubt !</button>
+        </div>
+        <div *ngSwitchDefault> <button mat-raised-button color="primary"> You selected : {{cardValue.value}}</button></div>
 
-    <div>
-        <button mat-raised-button color="primary">    You selected : {{cardValue}}
-
-    </button>
     </div>
 </div>

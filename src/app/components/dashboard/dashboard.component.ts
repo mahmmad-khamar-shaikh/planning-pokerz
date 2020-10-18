@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoginInfoService } from 'src/app/services/login-info.service';
+import { ICardValue } from 'src/app/types/shared.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,17 +12,24 @@ export class DashboardComponent implements OnInit {
 
   public role: string;
   public userName: string;
-  public cardValue: string;
+  public cardValue: ICardValue = { type: '', value: '' };
+  public storyNumber: string;
 
   constructor(private loginService: LoginInfoService) { }
 
   ngOnInit(): void {
     this.userName = this.loginService?.user?.name;
     this.role = this.loginService?.user?.role;
+    this.storyNumber = 'test010';
 
   }
-  public cardSelection(selectedValue: string): void {
-    this.cardValue = selectedValue ;
+  public cardSelection(selectedValue: string | number): void {
+    if (typeof selectedValue === 'number') {
+      this.cardValue.type = 'number';
+    } else {
+      this.cardValue.type = selectedValue;
+    }
+    this.cardValue.value = selectedValue.toString();
 
   }
 }
