@@ -17,7 +17,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { MatRippleModule } from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -36,7 +36,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatSidenavModule,
     MatListModule,
     MatRippleModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatChipsModule
 
 
 
