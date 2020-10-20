@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginContainerComponent } from './components/login-container/login-container.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RetroDashboardComponent } from './components/retro-dashboard/retro-dashboard.component';
+import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dashboard.component';
 import { TeamComponent } from './components/team/team.component';
 
 const loginScreenChildren: Routes = [
@@ -20,6 +22,8 @@ const homeScreenChildren: Routes = [
   { path: 'ceremony', component: CeremonyComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard-admin', component: AdminDashboardComponent },
+  { path: 'retro-dashboard', component: RetroDashboardComponent },
+  { path: 'scrum-dashboard', component: ScrumDashboardComponent },
   { path: '', redirectTo: 'team', pathMatch: 'full' }
 ];
 

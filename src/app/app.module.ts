@@ -23,6 +23,8 @@ import { AvtarComponent } from './components/avtar/avtar.component';
 import { TeamComponent } from './components/team/team.component';
 import { CeremonyComponent } from './components/ceremony/ceremony.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { RetroDashboardComponent } from './components/retro-dashboard/retro-dashboard.component';
+import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dashboard.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     AvtarComponent,
     TeamComponent,
     CeremonyComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    RetroDashboardComponent,
+    ScrumDashboardComponent
   ],
   imports: [
     BrowserModule,
