@@ -13,5 +13,16 @@
         height: 50px;
         width: 30px;
         margin: 10px;
+        background-color: #6495ed;
+        color: whitesmoke;
+    }
+    .dashboard>.mat-card-subtitle,
+    .mat-card-content {
+        font-size: 30px !important;
+        font-family: cursive;
+    }
+    .selection-button {
+        background-color: #6495ed !important;
+        color: whitesmoke !important;
     }
 }

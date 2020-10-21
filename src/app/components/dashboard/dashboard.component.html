@@ -55,12 +55,12 @@
 <div class="dashboard">
     <div [ngSwitch]="cardValue.type">
         <div *ngSwitchCase="'all_inclusive'">
-            <button mat-raised-button color="primary"> I am NOT sure !</button>
+            <button mat-raised-button class="selection-button"> I am NOT sure !</button>
         </div>
         <div *ngSwitchCase="'?'">
-            <button mat-raised-button color="primary"> I still have a doubt !</button>
+            <button mat-raised-button class="selection-button"> I still have a doubt !</button>
         </div>
-        <div *ngSwitchDefault> <button mat-raised-button color="primary"> You selected : {{cardValue.value}}</button></div>
+        <div *ngSwitchDefault> <button mat-raised-button class="selection-button"> You selected : {{cardValue.value}}</button></div>
 
     </div>
 </div>

@@ -25,6 +25,7 @@ import { CeremonyComponent } from './components/ceremony/ceremony.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { RetroDashboardComponent } from './components/retro-dashboard/retro-dashboard.component';
 import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dashboard.component';
+import { UnderContructionComponent } from './components/under-contruction/under-contruction.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dash
     CeremonyComponent,
     AdminDashboardComponent,
     RetroDashboardComponent,
-    ScrumDashboardComponent
+    ScrumDashboardComponent,
+    UnderContructionComponent
   ],
   imports: [
     BrowserModule,
