@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginInfoService } from 'src/app/services/login-info.service';
+import { Avtar } from 'src/app/types/custom.types';
 import { IUser } from 'src/app/types/user.interface';
 
 @Component({
@@ -29,16 +30,23 @@ export class AvtarComponent implements OnInit {
     );
   }
 
-  public toDashboard(isHost: boolean): void {
+  public toDashboard(avtar: Avtar): void {
     const userObject: IUser = {
-      role: isHost ? 'Host' : 'Guest',
+      role: avtar,
       name: this.avtarForm.get('displayName').value
     };
     this.loginService.user = userObject;
-    if (isHost) {
-      this.router.navigate(['/home/dashboard-admin']);
-    } else { this.router.navigate(['/home/dashboard']); }
-
+    switch (avtar) {
+      case Avtar.SL:
+        this.router.navigate(['/home/dashboard-admin']);
+        break;
+      case Avtar.PO:
+        this.router.navigate(['/home/dashboard-limited']);
+        break;
+      default:
+        this.router.navigate(['/home/dashboard']);
+        break;
+    }
   }
 
 }

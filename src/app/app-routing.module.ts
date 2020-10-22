@@ -6,6 +6,7 @@ import { AvtarComponent } from './components/avtar/avtar.component';
 import { CeremonyComponent } from './components/ceremony/ceremony.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { LimitedDashboardComponent } from './components/limited-dashboard/limited-dashboard.component';
 import { LoginContainerComponent } from './components/login-container/login-container.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -24,6 +25,7 @@ const homeScreenChildren: Routes = [
   { path: 'dashboard-admin', component: AdminDashboardComponent },
   { path: 'retro-dashboard', component: RetroDashboardComponent },
   { path: 'scrum-dashboard', component: ScrumDashboardComponent },
+  { path: 'dashboard-limited', component: LimitedDashboardComponent },
   { path: '', redirectTo: 'team', pathMatch: 'full' }
 ];
 

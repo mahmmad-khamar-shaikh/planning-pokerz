@@ -11,11 +11,15 @@
             </form>
         </mat-card-content>
         <mat-card-actions align="center">
-            <button mat-raised-button color="primary" (click)="toDashboard(false)">
+
+            <button mat-raised-button (click)="toDashboard(1)">
+        Host
+      </button>
+            <button mat-raised-button color="primary" (click)="toDashboard(0)">
         Join
       </button>
-            <button mat-raised-button color="accent" (click)="toDashboard(true)">
-        Join as Host
+            <button mat-raised-button (click)="toDashboard(2)">
+        PO
       </button>
         </mat-card-actions>
     </mat-card>
