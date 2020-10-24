@@ -8,19 +8,24 @@
                         Please enter Display Name
                     </mat-error>
                 </mat-form-field>
+                <mat-radio-group aria-label="Select your Role" class="vertical" formControlName="avtarRole">
+                    <mat-radio-button class="radio-vertical" value="DEV">Deveoper/QA</mat-radio-button>
+                    <mat-radio-button class="radio-vertical" value="SL">SM/SL</mat-radio-button>
+                    <mat-radio-button class="radio-vertical" value="PO">Product Owner</mat-radio-button>
+                </mat-radio-group>
             </form>
         </mat-card-content>
         <mat-card-actions align="center">
 
-            <button mat-raised-button [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(1)">
+            <!-- <button mat-raised-button [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(1)">
         Host
-      </button>
+      </button> -->
             <button mat-raised-button color="primary" [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(0)">
-        Join
+        Join as {{avtarForm.get('avtarRole').value}}
       </button>
-            <button mat-raised-button [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(2)">
+            <!-- <button mat-raised-button [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(2)">
         PO
-      </button>
+      </button> -->
         </mat-card-actions>
     </mat-card>
 </div>

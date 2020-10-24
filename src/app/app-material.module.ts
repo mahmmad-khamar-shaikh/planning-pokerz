@@ -19,6 +19,7 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -39,7 +40,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatRippleModule,
     MatBadgeModule,
     MatChipsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRadioModule
 
   ]
 })

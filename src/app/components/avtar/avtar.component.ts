@@ -20,7 +20,8 @@ export class AvtarComponent implements OnInit {
 
   ngOnInit(): void {
     this.avtarForm = this.fb.group({
-      displayName: ['', Validators.required]
+      displayName: ['', Validators.required],
+      avtarRole: ['DEV']
     });
   }
   isFieldInvalid(field: string): boolean {
@@ -30,17 +31,21 @@ export class AvtarComponent implements OnInit {
     );
   }
 
-  public toDashboard(avtar: Avtar): void {
+  public toDashboard(): void {
+
+    const selctedAvtar = this.avtarForm.get('avtarRole').value as Avtar;
+
     const userObject: IUser = {
-      role: avtar,
+      role: selctedAvtar,
       name: this.avtarForm.get('displayName').value
     };
     this.loginService.user = userObject;
-    switch (avtar) {
-      case Avtar.SL:
+    console.log( Avtar.SL.toString());
+    switch (selctedAvtar.toString()) {
+      case 'SL':
         this.router.navigate(['/home/dashboard-admin']);
         break;
-      case Avtar.PO:
+      case 'PO':
         this.router.navigate(['/home/dashboard-po']);
         break;
       default:
