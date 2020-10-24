@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = this.loginService?.user?.name;
-    this.role = this.loginService?.user?.role;
+    this.role = this.loginService?.user?.role.toString();
     this.storyNumber = 'test010';
 
   }

@@ -27,6 +27,7 @@ import { RetroDashboardComponent } from './components/retro-dashboard/retro-dash
 import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dashboard.component';
 import { UnderContructionComponent } from './components/under-contruction/under-contruction.component';
 import { LimitedDashboardComponent } from './components/limited-dashboard/limited-dashboard.component';
+import { PoDashboardComponent } from './components/po-dashboard/po-dashboard.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { LimitedDashboardComponent } from './components/limited-dashboard/limite
     RetroDashboardComponent,
     ScrumDashboardComponent,
     UnderContructionComponent,
-    LimitedDashboardComponent
+    LimitedDashboardComponent,
+    PoDashboardComponent
   ],
   imports: [
     BrowserModule,

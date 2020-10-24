@@ -10,6 +10,7 @@ import { LimitedDashboardComponent } from './components/limited-dashboard/limite
 import { LoginContainerComponent } from './components/login-container/login-container.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PoDashboardComponent } from './components/po-dashboard/po-dashboard.component';
 import { RetroDashboardComponent } from './components/retro-dashboard/retro-dashboard.component';
 import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dashboard.component';
 import { TeamComponent } from './components/team/team.component';
@@ -25,7 +26,7 @@ const homeScreenChildren: Routes = [
   { path: 'dashboard-admin', component: AdminDashboardComponent },
   { path: 'retro-dashboard', component: RetroDashboardComponent },
   { path: 'scrum-dashboard', component: ScrumDashboardComponent },
-  { path: 'dashboard-limited', component: LimitedDashboardComponent },
+  { path: 'dashboard-po', component: PoDashboardComponent },
   { path: '', redirectTo: 'team', pathMatch: 'full' }
 ];
 

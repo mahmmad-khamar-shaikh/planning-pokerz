@@ -18,4 +18,8 @@
     .story-point-doubt-chip {
         background-color: #ffa07a !important;
     }
+    .mat-card-header {
+        display: flex;
+        flex-direction: column !important;
+    }
 }

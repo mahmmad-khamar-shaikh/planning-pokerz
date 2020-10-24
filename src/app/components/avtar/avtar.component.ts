@@ -41,7 +41,7 @@ export class AvtarComponent implements OnInit {
         this.router.navigate(['/home/dashboard-admin']);
         break;
       case Avtar.PO:
-        this.router.navigate(['/home/dashboard-limited']);
+        this.router.navigate(['/home/dashboard-po']);
         break;
       default:
         this.router.navigate(['/home/dashboard']);
