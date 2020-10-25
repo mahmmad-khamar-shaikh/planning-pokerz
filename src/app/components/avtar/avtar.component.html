@@ -16,16 +16,10 @@
             </form>
         </mat-card-content>
         <mat-card-actions align="center">
-
-            <!-- <button mat-raised-button [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(1)">
-        Host
-      </button> -->
-            <button mat-raised-button color="primary" [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(0)">
+            <button mat-raised-button color="primary" [disabled]="isFieldInvalid('displayName')" (click)="toDashboard()">
         Join as {{avtarForm.get('avtarRole').value}}
       </button>
-            <!-- <button mat-raised-button [disabled]="isFieldInvalid('displayName')" (click)="toDashboard(2)">
-        PO
-      </button> -->
+
         </mat-card-actions>
     </mat-card>
 </div>
