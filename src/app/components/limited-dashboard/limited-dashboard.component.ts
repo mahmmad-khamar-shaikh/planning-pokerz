@@ -8,6 +8,8 @@ import { IStoryPointChoice } from 'src/app/types/shared.interface';
 })
 export class LimitedDashboardComponent implements OnInit {
   public storyPointCollection: IStoryPointChoice[];
+  public userNotSureCollection: IStoryPointChoice[];
+  public userStillHaveADoubt: IStoryPointChoice[];
   constructor() { }
   ngOnInit(): void {
     this.storyPointCollection = [
@@ -15,6 +17,19 @@ export class LimitedDashboardComponent implements OnInit {
       { userName: 'Pandari', storyPoint: '3' },
       { userName: 'Akash', storyPoint: '3' },
       { userName: 'Vaibhav', storyPoint: '3' }];
+
+    this.userNotSureCollection = [
+      { userName: 'Rahul', storyPoint: '' },
+      { userName: 'Shilpa', storyPoint: '' },
+      { userName: 'Vaibhav', storyPoint: '' }];
+
+    // this.userStillHaveADoubt = [
+    //   { userName: 'Rupal', storyPoint: '' },
+    //   { userName: 'Vaibhav', storyPoint: '' }];
+
   }
+
+
+
 
 }

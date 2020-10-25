@@ -4,39 +4,36 @@
             <div class="limited-dashboard">
                 <mat-chip-list *ngFor="let story of storyPointCollection">
                     <mat-chip class="story-point-chip">
-                        <span matBadge="{{story.storyPoint}}" matBadgeOverlap="false">story.userName</span>
+                        <span matBadge="{{story.storyPoint}}" matBadgeOverlap="false">{{story.userName}}</span>
                     </mat-chip>
                 </mat-chip-list>
             </div>
             <mat-divider></mat-divider>
-            <div class="limited-dashboard">
+            <div class="limited-dashboard title-text" *ngIf="userNotSureCollection">
                 Team Members who are not sure !
             </div>
+            <div class="limited-dashboard title-text" *ngIf="!userNotSureCollection">
+                <span> Good, Team understands story.</span>
+            </div>
             <div class="limited-dashboard">
-                <mat-chip-list>
+                <mat-chip-list *ngFor="let userNotSure of userNotSureCollection">
                     <mat-chip class="story-point-not-sure-chip">
-                        Rahul
+                        {{userNotSure.userName}}
                         <mat-icon style="padding-left: 2px;">sentiment_very_dissatisfied</mat-icon>
-                    </mat-chip>
-                    <mat-chip class="story-point-not-sure-chip">
-                        Shipa
-                        <mat-icon style="padding-left: 2px;"> sentiment_very_dissatisfied</mat-icon>
                     </mat-chip>
                 </mat-chip-list>
             </div>
             <mat-divider></mat-divider>
-            <div class="limited-dashboard">
+            <div class="limited-dashboard title-text" *ngIf="userStillHaveADoubt">
                 Still have a doubt
-
+            </div>
+            <div class="limited-dashboard title-text" *ngIf="!userStillHaveADoubt">
+                <span> Good, Team has no doubt ! </span>
             </div>
             <div class="limited-dashboard">
-                <mat-chip-list>
+                <mat-chip-list *ngFor="let userWithDoubt of userStillHaveADoubt">
                     <mat-chip class="story-point-doubt-chip">
-                        Vaibhav
-                        <mat-icon>not_listed_location</mat-icon>
-                    </mat-chip>
-                    <mat-chip class="story-point-doubt-chip">
-                        Rupal
+                        {{userWithDoubt.userName}}
                         <mat-icon>not_listed_location</mat-icon>
                     </mat-chip>
                 </mat-chip-list>
