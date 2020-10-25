@@ -1,47 +1,19 @@
 <div class="dashboard">
     <button mat-stroked-button color="accent" [routerLink]="['/home/ceremony']" matTooltip="Go back to meeting board">
-       <mat-icon> reply_all</mat-icon> </button>
+    <mat-icon> reply_all</mat-icon>
+  </button>
 </div>
-
-
 <div class="dashboard ">
-    <div>
-        <button mat-stroked-button color="primary">
-      Story {{storyNumber}}
-    </button>
-    </div>
-
+    <button mat-stroked-button color="primary">
+    Story {{storyNumber}}
+  </button>
 </div>
-
 <div class="dashboard ">
-    <mat-card matRipple (click)="cardSelection(2) ">
+    <mat-card matRipple *ngFor="let story of arrayStoryNumber" (click)="cardSelection(story) ">
         <mat-card-content>
-            2
+            {{story}}
         </mat-card-content>
     </mat-card>
-    <mat-card matRipple (click)="cardSelection(3) ">
-        <mat-card-content>
-            3
-        </mat-card-content>
-    </mat-card>
-    <mat-card matRipple (click)="cardSelection(5) ">
-        <mat-card-content>
-            5
-        </mat-card-content>
-    </mat-card>
-    <mat-card matRipple (click)="cardSelection(8) ">
-        <mat-card-content>
-            8
-        </mat-card-content>
-    </mat-card>
-    <mat-card matRipple (click)="cardSelection(13) ">
-        <mat-card-content>
-            13
-        </mat-card-content>
-    </mat-card>
-
-
-
 </div>
 <div class="dashboard ">
     <mat-card matRipple (click)="cardSelection( 'all_inclusive') ">
@@ -64,13 +36,16 @@
 <div class="dashboard ">
     <div [ngSwitch]="cardValue.type ">
         <div *ngSwitchCase=" 'all_inclusive' ">
-            <button mat-raised-button class="selection-button "> I am NOT sure !</button>
+            <button mat-stroked-button color="warn"> I am NOT sure !</button>
         </div>
         <div *ngSwitchCase=" '?' ">
-            <button mat-raised-button class="selection-button "> I still have a doubt !</button>
+            <button mat-stroked-button color="warn"> I still have a doubt !</button>
         </div>
-        <div *ngSwitchDefault> <button mat-raised-button class="selection-button "> You selected :
+        <div *ngSwitchDefault>
+            <button mat-stroked-button *ngIf="!cardValue.value" color="primary">
+        Please select Card Above</button>
+            <button mat-stroked-button *ngIf="cardValue.value" color="primary">
+        You selected :
         {{cardValue.value}}</button></div>
-
     </div>
 </div>
