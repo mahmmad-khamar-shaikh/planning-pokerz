@@ -6,6 +6,9 @@
         margin: 5px;
         flex-wrap: wrap;
     }
+    .limited-dashboard>mat-card {
+        background-color: #f0f8ff;
+    }
     .limited-dashboard>mat-chip-list {
         margin: 10px;
     }

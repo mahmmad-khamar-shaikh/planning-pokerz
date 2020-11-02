@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {faGithub, faGoogle, faMicrosoft} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,10 @@ export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   public isError = false;
   public customErrorMessage: string;
-  private formSubmitAttempt: boolean; // {2}
+  private formSubmitAttempt: boolean;
+  githubIcon = faGithub;
+  googleIcon = faGoogle;
+  microsoftIcon = faMicrosoft;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,13 +24,13 @@ export class LoginComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.loginFormGroup = this.formBuilder.group({     // {5}
+    this.loginFormGroup = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
 
   }
-  isFieldInvalid(field: string): boolean { // {6}
+  isFieldInvalid(field: string): boolean {
     return (
       (!this.loginFormGroup.get(field).valid && this.loginFormGroup.get(field).touched) ||
       (this.loginFormGroup.get(field).untouched && this.formSubmitAttempt)
