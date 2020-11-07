@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { LoginInfoService } from 'src/app/services/login-info.service';
 import { Avtar } from 'src/app/types/custom.types';
 import { IUser } from 'src/app/types/user.interface';
-
+import { faBackward } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-avtar',
   templateUrl: './avtar.component.html',
@@ -12,6 +12,7 @@ import { IUser } from 'src/app/types/user.interface';
 })
 export class AvtarComponent implements OnInit {
 
+  faArrowLeft = faBackward;
   avtarForm: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -40,7 +41,7 @@ export class AvtarComponent implements OnInit {
       name: this.avtarForm.get('displayName').value
     };
     this.loginService.user = userObject;
-    console.log( Avtar.SL.toString());
+    console.log(Avtar.SL.toString());
     switch (selctedAvtar.toString()) {
       case 'SL':
         this.router.navigate(['/home/dashboard-admin']);

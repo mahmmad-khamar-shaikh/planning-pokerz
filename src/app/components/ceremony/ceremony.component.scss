@@ -16,10 +16,10 @@
     mat-icon {
         cursor: pointer;
     }
-    #goback {
+    #button-fab {
+        position: fixed;
         left: 20px;
-        top: 40px;
-        left: auto;
-        position: absolute;
+        top: 15px;
+        color: #f0f8ff;
     }
 }

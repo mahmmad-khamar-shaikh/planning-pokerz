@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginInfoService } from 'src/app/services/login-info.service';
 import { ICardValue } from 'src/app/types/shared.interface';
+import { faBackward } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,8 @@ export class DashboardComponent implements OnInit {
   public userName: string;
   public cardValue: ICardValue = { type: '', value: '' };
   public storyNumber: string;
-  public arrayStoryNumber = ['2', '3', '5', '8', '13'];
+  public arrayStoryNumber = ['0','2', '3', '5', '8', '13'];
+  faArrowLeft = faBackward;
 
   constructor(private loginService: LoginInfoService) { }
 
