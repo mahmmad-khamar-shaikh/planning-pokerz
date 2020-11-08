@@ -6,3 +6,8 @@ export interface IStoryPointChoice {
   userName: string;
   storyPoint: string;
 }
+
+export interface ITeams {
+  teamId: string;
+  teamName: string;
+}

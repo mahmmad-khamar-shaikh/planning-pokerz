@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamService } from 'src/app/services/team.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-team',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  constructor() { }
+  teams$: any;
+  constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
+    this.teamService.getTeamCollection().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+        )
+      )
+    ).subscribe(data => {
+      this.teams$ = data;
+    });
+
   }
 
 }
