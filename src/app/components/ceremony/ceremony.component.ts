@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faBackward } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ceremony',
@@ -7,9 +6,7 @@ import { faBackward } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./ceremony.component.scss']
 })
 export class CeremonyComponent implements OnInit {
-  faArrowLeft = faBackward;
   constructor() { }
-
   ngOnInit(): void {
   }
 

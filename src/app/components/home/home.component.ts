@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   public user: string;
   items: MenuItem[];
   home: MenuItem;
+    isExpanded = false;
   constructor(private loginService: LoginInfoService) { }
   signOutIcon = faSignOutAlt;
   ngOnInit(): void {
