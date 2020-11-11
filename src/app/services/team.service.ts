@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { ITeams } from '../types/shared.interface';
+import { DALService } from './dal.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
 
-  constructor(private fireStoreRef: AngularFirestore) {
+  constructor(private dalServiceRef: DALService<ITeams>) {
   }
 
-  getTeamCollection(): AngularFirestoreCollection<ITeams> {
+  get getTeamCollection(): AngularFirestoreCollection<ITeams> {
     const teamPath = 'Teams';
-    return this.fireStoreRef.collection<ITeams>(teamPath);
+    return this.dalServiceRef.getCollection(teamPath);
   }
 
 }

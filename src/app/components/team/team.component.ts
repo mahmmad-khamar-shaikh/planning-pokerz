@@ -13,7 +13,7 @@ export class TeamComponent implements OnInit {
   constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
-    this.teamService.getTeamCollection().snapshotChanges().pipe(
+    this.teamService.getTeamCollection.snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({ id: c.payload.doc.id, ...c.payload.doc.data() })

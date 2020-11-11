@@ -10,7 +10,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 
 /** Angular Fire / FireBase Dependency  */
 
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -65,6 +65,7 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'aungular-auth-firebase'),
     AngularFireDatabaseModule,
+
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AppMaterialModule,
     BrowserAnimationsModule,

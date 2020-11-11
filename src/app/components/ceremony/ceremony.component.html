@@ -1,22 +1,10 @@
 <div class="ceremony-container">
-    <mat-card>
-        <mat-card-content align="center">Planning & Estimation</mat-card-content>
+    <mat-card *ngFor="let cer of ceremonies$; let i=index">
+        <mat-card-content align="center">{{cer.ceremonyName}}</mat-card-content>
         <mat-card-actions align="center">
-
             <mat-icon color="primary" matRipple [routerLink]="['/home/avtar']">meeting_room</mat-icon>
         </mat-card-actions>
     </mat-card>
-    <mat-card>
-        <mat-card-content align="center">Scrum Call</mat-card-content>
-        <mat-card-actions align="center">
-            <mat-icon color="primary" matRipple [routerLink]="['/home/scrum-dashboard']">meeting_room</mat-icon>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card>
-        <mat-card-content align="center">Retrospective</mat-card-content>
-        <mat-card-actions align="center">
-            <mat-icon color="primary" matRipple [routerLink]="['/home/retro-dashboard']">meeting_room</mat-icon>
-        </mat-card-actions>
-    </mat-card>
+
 
 </div>

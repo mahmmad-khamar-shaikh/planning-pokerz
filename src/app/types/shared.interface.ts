@@ -11,3 +11,8 @@ export interface ITeams {
   teamId: string;
   teamName: string;
 }
+
+export interface ICeremony {
+  ceremonyId: string;
+  ceremonyName: string;
+}
