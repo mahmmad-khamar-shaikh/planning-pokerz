@@ -5,6 +5,8 @@ import { LoginInfoService } from 'src/app/services/login-info.service';
 import { Avtar } from 'src/app/types/custom.types';
 import { IUser } from 'src/app/types/user.interface';
 import { faBackward } from '@fortawesome/free-solid-svg-icons';
+import { SessionInformationService } from 'src/app/services/session-information.service';
+import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-avtar',
   templateUrl: './avtar.component.html',
@@ -17,12 +19,12 @@ export class AvtarComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private loginService: LoginInfoService) { }
+    private sessionInformationService: SessionInformationService) { }
 
   ngOnInit(): void {
     this.avtarForm = this.fb.group({
       displayName: ['', Validators.required],
-      avtarRole: ['DEV']
+      avtarRole: ['']
     });
   }
   isFieldInvalid(field: string): boolean {
@@ -40,8 +42,7 @@ export class AvtarComponent implements OnInit {
       role: selctedAvtar,
       name: this.avtarForm.get('displayName').value
     };
-    this.loginService.user = userObject;
-    console.log(Avtar.SL.toString());
+    this.sessionInformationService.userInformation = userObject;
     switch (selctedAvtar.toString()) {
       case 'SL':
         this.router.navigate(['/home/dashboard-admin']);

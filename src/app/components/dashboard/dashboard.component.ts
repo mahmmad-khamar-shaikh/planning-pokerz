@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { LoginInfoService } from 'src/app/services/login-info.service';
+import { SessionInformationService } from 'src/app/services/session-information.service';
 import { ICardValue } from 'src/app/types/shared.interface';
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +16,18 @@ export class DashboardComponent implements OnInit {
   public storyNumber: string;
   public arrayStoryNumber = ['0', '2', '3', '5', '8', '13'];
 
-  constructor(private loginService: LoginInfoService) { }
+
+  constructor(
+    private sessionInformationService: SessionInformationService,
+    private angularFirestoreService: AngularFirestore
+  ) { }
 
   ngOnInit(): void {
-    this.userName = this.loginService?.user?.name;
-    this.role = this.loginService?.user?.role.toString();
+    this.userName = this.sessionInformationService.userInformation.name;
+    this.role = this.sessionInformationService.userInformation.role.toString();
     this.storyNumber = 'test010';
+
+
 
   }
   public cardSelection(selectedValue: string | number): void {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { CeremonyService } from 'src/app/services/ceremony.service';
+import { SessionInformationService } from 'src/app/services/session-information.service';
 import { CeremonyOptions } from 'src/app/types/custom.types';
 import { ICeremony } from 'src/app/types/shared.interface';
 
@@ -15,7 +16,8 @@ export class CeremonyComponent implements OnInit {
 
   constructor(
     private ceremonyService: CeremonyService,
-    private router: Router
+    private router: Router,
+    private sessionInformationService: SessionInformationService
   ) { }
   ngOnInit(): void {
     this.ceremonyService.getCeremonyCollection.snapshotChanges().pipe(
@@ -30,9 +32,10 @@ export class CeremonyComponent implements OnInit {
 
   }
 
-  navigateToCermony(ceremonyType: CeremonyOptions): void {
+  navigateToCermony(ceremonyType: CeremonyOptions, ceremonyId: string): void {
     switch (ceremonyType.toString()) {
       case 'Estimation':
+        this.sessionInformationService.sessionCeremony = ceremonyId;
         this.router.navigate(['/home/avtar']);
         break;
       case 'Retrospective':

@@ -4,8 +4,7 @@
             {{team.teamName}}
         </mat-card-content>
         <mat-card-actions align="center">
-
-            <mat-icon color="primary" matRipple [routerLink]="['/home/ceremony']">groups</mat-icon>
+            <mat-icon color="primary" matRipple (click)="navigateToCeremony(team.id)">groups</mat-icon>
         </mat-card-actions>
     </mat-card>
 </div>

@@ -20,13 +20,11 @@ export class AppComponent {
       switch (true) {
         case event instanceof NavigationStart:
           this.loading = true;
-          console.log('inside navigation start');
           break;
         case event instanceof NavigationCancel:
         case event instanceof NavigationEnd:
         case event instanceof NavigationError: {
           this.loading = false;
-          console.log('inside navigation end');
           break;
         }
         default:

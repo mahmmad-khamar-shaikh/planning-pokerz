@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { map } from 'rxjs/operators';
+import { SessionInformationService } from 'src/app/services/session-information.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team',
@@ -10,7 +12,11 @@ import { map } from 'rxjs/operators';
 export class TeamComponent implements OnInit {
 
   teams$: any;
-  constructor(private teamService: TeamService) { }
+  constructor(
+    private teamService: TeamService,
+    private sessionService: SessionInformationService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.teamService.getTeamCollection.snapshotChanges().pipe(
@@ -24,5 +30,8 @@ export class TeamComponent implements OnInit {
     });
 
   }
-
+  navigateToCeremony(teamId: string): void {
+    this.sessionService.sessionTeam = teamId ;
+    this.router.navigate(['/home/ceremony']);
+  }
 }

@@ -16,3 +16,11 @@ export interface ICeremony {
   ceremonyId: string;
   ceremonyName: string;
 }
+
+export interface IMeetings {
+  ceremonyId: string;
+  meetingStartedTime: string;
+  startedBy: string;
+  endedBy: string;
+  isMeetingLive: boolean;
+}
