@@ -7,13 +7,10 @@ import { DALService } from './dal.service';
   providedIn: 'root'
 })
 export class TeamService {
-
   constructor(private dalServiceRef: DALService<ITeams>) {
   }
-
   get getTeamCollection(): AngularFirestoreCollection<ITeams> {
     const teamPath = 'Teams';
     return this.dalServiceRef.getCollection(teamPath);
   }
-
 }

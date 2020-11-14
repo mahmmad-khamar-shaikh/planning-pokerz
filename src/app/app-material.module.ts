@@ -7,19 +7,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {MatTableModule} from '@angular/material/table';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSelectModule} from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 import { MatIconModule } from '@angular/material/icon';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { MatRippleModule } from '@angular/material/core';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -41,8 +43,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatBadgeModule,
     MatChipsModule,
     MatTooltipModule,
-    MatRadioModule
-
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ]
 })
 export class AppMaterialModule { }
