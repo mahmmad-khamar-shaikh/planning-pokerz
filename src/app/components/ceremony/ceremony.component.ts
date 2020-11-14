@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { CeremonyService } from 'src/app/services/ceremony.service';
+import { CeremonyOptions } from 'src/app/types/custom.types';
 import { ICeremony } from 'src/app/types/shared.interface';
 
 @Component({
@@ -11,7 +13,10 @@ import { ICeremony } from 'src/app/types/shared.interface';
 export class CeremonyComponent implements OnInit {
   ceremonies$: ICeremony[];
 
-  constructor(private ceremonyService: CeremonyService) { }
+  constructor(
+    private ceremonyService: CeremonyService,
+    private router: Router
+  ) { }
   ngOnInit(): void {
     this.ceremonyService.getCeremonyCollection.snapshotChanges().pipe(
       map(changes =>
@@ -22,6 +27,23 @@ export class CeremonyComponent implements OnInit {
     ).subscribe(data => {
       this.ceremonies$ = data;
     });
+
+  }
+
+  navigateToCermony(ceremonyType: CeremonyOptions): void {
+    switch (ceremonyType.toString()) {
+      case 'Estimation':
+        this.router.navigate(['/home/avtar']);
+        break;
+      case 'Retrospective':
+        this.router.navigate(['/home/retro-dashboard']);
+        break;
+      case 'Scrum':
+        this.router.navigate(['/home/scrum-dashboard']);
+        break;
+      default:
+        break;
+    }
 
   }
 

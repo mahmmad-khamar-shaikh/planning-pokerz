@@ -3,3 +3,9 @@ export enum Avtar {
   SL,
   PO
 }
+
+export enum CeremonyOptions{
+  Retrospective,
+  Estimation,
+  Scrum
+}
