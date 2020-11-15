@@ -40,3 +40,6 @@
         {{cardValue.value}}</button></div>
     </div>
 </div>
+<p *ngFor="let item of meetingCollection$ | async">
+    {{ item.ceremonyId.toString() }} is {{ item.isMeetingLive }}
+</p>

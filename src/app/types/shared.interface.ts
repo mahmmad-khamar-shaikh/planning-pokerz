@@ -17,7 +17,7 @@ export interface ICeremony {
   ceremonyName: string;
 }
 
-export interface IMeetings {
+export interface IMeeting {
   ceremonyId: string;
   meetingStartedTime: string;
   startedBy: string;

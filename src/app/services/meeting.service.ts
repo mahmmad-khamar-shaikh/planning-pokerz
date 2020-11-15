@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { IMeetings } from '../types/shared.interface';
+import { IMeeting } from '../types/shared.interface';
 import { SessionInformationService } from './session-information.service';
 
 @Injectable({
@@ -13,12 +13,13 @@ export class MeetingService {
     private sessionInformationService: SessionInformationService
   ) { }
 
-  get liveMeeting(): AngularFirestoreCollection<IMeetings> {
-    return this.angularFirestoreService.collection('Meetings', ref => {
-      return ref
-        .where('ceremonyId', '==', this.sessionInformationService.sessionInformation.ceremonyId)
-        .where('isMettingLive', '==', true);
-    });
+  get liveMeeting(): AngularFirestoreCollection<IMeeting> {
+    return this.angularFirestoreService.collection('Meetings');
+    // , ref => {
+    //   return ref
+    //   //  .where('ceremonyId', '==', this.sessionInformationService.sessionInformation.ceremonyId)
+    //    // .where('isMettingLive', '==', true);
+    // });
   }
 
 }
