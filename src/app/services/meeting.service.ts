@@ -14,12 +14,11 @@ export class MeetingService {
   ) { }
 
   get liveMeeting(): AngularFirestoreCollection<IMeeting> {
-    return this.angularFirestoreService.collection('Meetings');
-    // , ref => {
-    //   return ref
-    //   //  .where('ceremonyId', '==', this.sessionInformationService.sessionInformation.ceremonyId)
-    //    // .where('isMettingLive', '==', true);
-    // });
+    return this.angularFirestoreService.collection('Meetings', ref => {
+      return ref
+       .where('ceremonyId', '==', this.sessionInformationService.sessionInformation.ceremonyId)
+       .where('isMeetingLive', '==', true);
+    });
   }
 
 }

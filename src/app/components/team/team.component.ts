@@ -3,6 +3,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { map } from 'rxjs/operators';
 import { SessionInformationService } from 'src/app/services/session-information.service';
 import { Router } from '@angular/router';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-team',
@@ -15,15 +16,14 @@ export class TeamComponent implements OnInit {
   constructor(
     private teamService: TeamService,
     private sessionService: SessionInformationService,
-    private router: Router
+    private router: Router,
+    private utilService: UtilService
   ) { }
 
   ngOnInit(): void {
     this.teamService.getTeamCollection.snapshotChanges().pipe(
       map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
+        changes.map(this.utilService.dbToDomanEntity)
       )
     ).subscribe(data => {
       this.teams$ = data;
@@ -31,7 +31,7 @@ export class TeamComponent implements OnInit {
 
   }
   navigateToCeremony(teamId: string): void {
-    this.sessionService.sessionTeam = teamId ;
+    this.sessionService.sessionTeam = teamId;
     this.router.navigate(['/home/ceremony']);
   }
 }

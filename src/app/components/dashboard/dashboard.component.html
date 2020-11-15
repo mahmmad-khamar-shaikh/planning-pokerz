@@ -1,7 +1,14 @@
-<div class="dashboard ">
-    <button mat-stroked-button color="primary">
-    Story {{storyNumber}}
-  </button>
+<div class="dashboard" style="justify-content: space-evenly !important;">
+    <div>
+        <button mat-stroked-button color="primary">
+      Story {{storyNumber}}
+    </button>
+    </div>
+    <div>
+        <button mat-stroked-button color="warn">
+      End Meeting
+    </button>
+    </div>
 </div>
 <div class="dashboard-card">
     <mat-card matRipple *ngFor="let story of arrayStoryNumber" (click)="cardSelection(story) ">

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { CeremonyService } from 'src/app/services/ceremony.service';
 import { SessionInformationService } from 'src/app/services/session-information.service';
+import { UtilService } from 'src/app/services/util.service';
 import { CeremonyOptions } from 'src/app/types/custom.types';
 import { ICeremony } from 'src/app/types/shared.interface';
 
@@ -17,14 +18,13 @@ export class CeremonyComponent implements OnInit {
   constructor(
     private ceremonyService: CeremonyService,
     private router: Router,
-    private sessionInformationService: SessionInformationService
+    private sessionInformationService: SessionInformationService,
+    private utilService: UtilService
   ) { }
   ngOnInit(): void {
     this.ceremonyService.getCeremonyCollection.snapshotChanges().pipe(
       map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
+        changes.map(this.utilService.dbToDomanEntity)
       )
     ).subscribe(data => {
       this.ceremonies$ = data;

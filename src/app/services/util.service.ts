@@ -11,7 +11,6 @@ export class UtilService {
 
     const entity = data.payload.doc.data();
     entity.id = data.payload.doc.id;
-
     return entity;
   }
 
