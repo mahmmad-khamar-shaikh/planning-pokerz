@@ -38,6 +38,7 @@ import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-sv
 /** PrimeNG component */
 
 import {BreadcrumbModule} from 'primeng/breadcrumb';
+import { StorySelectionComponent } from './components/estimation/story-selection/story-selection.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
     ScrumDashboardComponent,
     UnderContructionComponent,
     LimitedDashboardComponent,
-    PoDashboardComponent
+    PoDashboardComponent,
+    StorySelectionComponent
   ],
   imports: [
     BrowserModule,

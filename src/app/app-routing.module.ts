@@ -5,6 +5,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { AvtarComponent } from './components/avtar/avtar.component';
 import { CeremonyComponent } from './components/ceremony/ceremony.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StorySelectionComponent } from './components/estimation/story-selection/story-selection.component';
 import { HomeComponent } from './components/home/home.component';
 import { LimitedDashboardComponent } from './components/limited-dashboard/limited-dashboard.component';
 import { LoginContainerComponent } from './components/login-container/login-container.component';
@@ -14,6 +15,7 @@ import { PoDashboardComponent } from './components/po-dashboard/po-dashboard.com
 import { RetroDashboardComponent } from './components/retro-dashboard/retro-dashboard.component';
 import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dashboard.component';
 import { TeamComponent } from './components/team/team.component';
+
 
 const loginScreenChildren: Routes = [
   { path: 'signin', component: LoginComponent },
@@ -26,7 +28,7 @@ const homeScreenChildren: Routes = [
   { path: 'dashboard-admin', component: AdminDashboardComponent },
   { path: 'retro-dashboard', component: RetroDashboardComponent },
   { path: 'scrum-dashboard', component: ScrumDashboardComponent },
-  { path: 'dashboard-po', component: PoDashboardComponent },
+  { path: 'story-selection', component: StorySelectionComponent },
   { path: '', redirectTo: 'team', pathMatch: 'full' }
 ];
 

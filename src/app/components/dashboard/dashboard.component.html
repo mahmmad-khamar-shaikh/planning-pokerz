@@ -1,6 +1,6 @@
 <div class="dashboard" style="justify-content: space-evenly !important;">
     <div>
-        <button mat-stroked-button color="primary">
+        <button mat-stroked-button color="primary" [disabled]="isStoryButtonDisabled" (click)="navigateToStorySelection()">
       Story {{storyNumber}}
     </button>
     </div>
