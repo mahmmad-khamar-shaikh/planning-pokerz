@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-story-selection',
@@ -8,7 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class StorySelectionComponent implements OnInit {
   adminForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.adminForm = this.fb.group({
@@ -22,4 +26,13 @@ export class StorySelectionComponent implements OnInit {
     );
   }
 
+  goBackToBoard = () => {
+    this.router.navigate(['/home/dashboard-admin']);
+  }
+  startEstimation = () => {
+    this.goBackToBoard();
+  }
+  closeEstimation = () => {
+    this.goBackToBoard();
+  }
 }

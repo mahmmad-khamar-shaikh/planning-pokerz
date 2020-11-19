@@ -23,9 +23,9 @@ export class LimitedDashboardComponent implements OnInit {
       { userName: 'Shilpa', storyPoint: '' },
       { userName: 'Vaibhav', storyPoint: '' }];
 
-    // this.userStillHaveADoubt = [
-    //   { userName: 'Rupal', storyPoint: '' },
-    //   { userName: 'Vaibhav', storyPoint: '' }];
+    this.userStillHaveADoubt = [
+      { userName: 'Rupal', storyPoint: '' },
+      { userName: 'Vaibhav', storyPoint: '' }];
 
   }
 
