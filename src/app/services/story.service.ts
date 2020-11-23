@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class StoryService {
     });
   }
 
-  public currentStoryByStoryName(storyName: string): AngularFirestoreCollection<any> {
-    return this.angularFirestoreService.collection
+  public currentStoryByStoryName(storyId: string): AngularFirestoreDocument<any> {
+    return this.angularFirestoreService.collection('Stories').doc(storyId);
   }
 }

@@ -23,7 +23,10 @@ export class StorySelectionComponent implements OnInit {
     this.adminForm = this.fb.group({
       storyName: [this.sessionInformationService.getSessionInformation.currentStory || '', Validators.required]
     });
-    this.storyService.currentStoy(this.se)
+    this.storyService.currentStoy(this.sessionInformationService.getSessionInformation.currentStoryId)
+      .valueChanges().subscribe(data => {
+        console.log(`data ${data}`);
+      });
   }
   isFieldInvalid(field: string): boolean {
     return (

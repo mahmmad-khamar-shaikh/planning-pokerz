@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
             console.log(`stories data arrived ${v.storyName}`);
             this.storyNumber = v.storyName;
             this.sessionInformationService.setCurrentStory = this.storyNumber;
-            this.sessionInformationService.setCurrentStoryId= this
+            this.sessionInformationService.setCurrentStoryId = v.id;
           });
         });
 
