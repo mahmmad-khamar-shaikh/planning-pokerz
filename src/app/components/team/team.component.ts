@@ -31,7 +31,7 @@ export class TeamComponent implements OnInit {
 
   }
   navigateToCeremony(teamId: string): void {
-    this.sessionService.sessionTeam = teamId;
+    this.sessionService.setSessionTeam = teamId;
     this.router.navigate(['/home/ceremony']);
   }
 }

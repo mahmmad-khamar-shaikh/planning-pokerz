@@ -9,24 +9,36 @@ export class SessionInformationService {
   private sessionObject: ISession;
   constructor() {
     this.sessionObject = {
+      meetingId: '',
       ceremonyId: '',
       teamId: '',
+      currentStory: '',
+      currentStoryId: '',
       userInfo: {}
     };
   }
-  get sessionInformation(): ISession {
+  get getSessionInformation(): ISession {
     return this.sessionObject;
   }
-  set sessionCeremony(ceremonyToSet: string) {
+  set setSessionCeremony(ceremonyToSet: string) {
     this.sessionObject.ceremonyId = ceremonyToSet;
   }
-  set sessionTeam(teamToSet: string) {
+  set setSessionTeam(teamToSet: string) {
     this.sessionObject.teamId = teamToSet;
   }
-  get userInformation(): IUser {
+  get getUserInformation(): IUser {
     return this.sessionObject.userInfo;
   }
-  set userInformation(userInfo: IUser) {
+  set setUserInformation(userInfo: IUser) {
     this.sessionObject.userInfo = userInfo;
+  }
+  set setMeeting(meetingId: string) {
+    this.sessionObject.meetingId = meetingId;
+  }
+  set setCurrentStory(storyName: string) {
+    this.sessionObject.currentStory = storyName;
+  }
+  set setCurrentStoryId(storyId: string) {
+    this.sessionObject.currentStoryId = storyId;
   }
 }

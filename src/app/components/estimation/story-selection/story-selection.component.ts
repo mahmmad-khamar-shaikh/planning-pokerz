@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SessionInformationService } from 'src/app/services/session-information.service';
+import { StoryService } from 'src/app/services/story.service';
 
 @Component({
   selector: 'app-story-selection',
@@ -11,13 +13,17 @@ export class StorySelectionComponent implements OnInit {
   adminForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private sessionInformationService: SessionInformationService,
+    private storyService: StoryService
+
   ) { }
 
   ngOnInit(): void {
     this.adminForm = this.fb.group({
-      storyName: ['', Validators.required]
+      storyName: [this.sessionInformationService.getSessionInformation.currentStory || '', Validators.required]
     });
+    this.storyService.currentStoy(this.se)
   }
   isFieldInvalid(field: string): boolean {
     return (
@@ -30,6 +36,7 @@ export class StorySelectionComponent implements OnInit {
     this.router.navigate(['/home/dashboard-admin']);
   }
   startEstimation = () => {
+
     this.goBackToBoard();
   }
   closeEstimation = () => {

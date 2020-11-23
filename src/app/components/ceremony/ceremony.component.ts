@@ -35,7 +35,7 @@ export class CeremonyComponent implements OnInit {
   navigateToCermony(ceremonyType: CeremonyOptions, ceremonyId: string): void {
     switch (ceremonyType.toString()) {
       case 'Estimation':
-        this.sessionInformationService.sessionCeremony = ceremonyId;
+        this.sessionInformationService.setSessionCeremony = ceremonyId;
         this.router.navigate(['/home/avtar']);
         break;
       case 'Retrospective':

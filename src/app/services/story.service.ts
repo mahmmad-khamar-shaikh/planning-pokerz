@@ -11,10 +11,14 @@ export class StoryService {
   ) { }
 
   public currentStoy(meetingId: string): AngularFirestoreCollection<any> {
-    console.log('meeting id requested',meetingId);
+    console.log('meeting id requested', meetingId);
     return this.angularFirestoreService.collection('Stories', ref => {
       return ref
         .where('meetingId', '==', meetingId);
     });
+  }
+
+  public currentStoryByStoryName(storyName: string): AngularFirestoreCollection<any> {
+    return this.angularFirestoreService.collection
   }
 }

@@ -19,8 +19,9 @@ export interface ICeremony {
 
 export interface IMeeting {
   ceremonyId: string;
-  meetingStartedTime: string;
-  startedBy: string;
-  endedBy: string;
+  meetingStartedDateTime: Date;
+  meetingEndedDateTime?: Date;
+  startedBy?: string;
+  endedBy?: string;
   isMeetingLive: boolean;
 }

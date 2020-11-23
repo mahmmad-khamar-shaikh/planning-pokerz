@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -45,7 +46,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatTooltipModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ]
 })
 export class AppMaterialModule { }
