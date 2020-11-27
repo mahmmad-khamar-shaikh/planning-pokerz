@@ -34,15 +34,15 @@
 <div class="dashboard ">
     <div [ngSwitch]="cardValue.type ">
         <div *ngSwitchCase=" 'all_inclusive' ">
-            <button mat-stroked-button color="warn"> I am NOT sure !</button>
+            <button mat-stroked-button color="warn" (click)="submitEsitmation()"> I am NOT sure !</button>
         </div>
         <div *ngSwitchCase=" '?' ">
-            <button mat-stroked-button color="warn"> I still have a doubt !</button>
+            <button mat-stroked-button color="warn" (click)="submitEsitmation()"> I still have a doubt !</button>
         </div>
         <div *ngSwitchDefault>
             <button mat-stroked-button *ngIf="!cardValue.value" color="primary">
         Please select Card Above</button>
-            <button mat-stroked-button *ngIf="cardValue.value" color="primary">
+            <button mat-stroked-button *ngIf="cardValue.value" color="primary" (click)="submitEsitmation()">
         I want to go with :
         {{cardValue.value}}</button></div>
     </div>

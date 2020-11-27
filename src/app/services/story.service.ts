@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { promise } from 'protractor';
+import { IEstimation, IStory } from '../types/shared.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +23,28 @@ export class StoryService {
   public currentStoryByStoryName(storyId: string): AngularFirestoreDocument<any> {
     return this.angularFirestoreService.collection('Stories').doc(storyId);
   }
+
+  public openSessionForStory(storyInfo: IStory): Promise<DocumentReference> {
+    return this.angularFirestoreService.collection('Stories').add({ ...storyInfo });
+  }
+  public closeSessionForStory(storyId: string): Promise<void> {
+
+    return this.angularFirestoreService.doc(`Stories/${storyId}`).update({ isEstimationClosed: true });
+  }
+
+  public addEstimationForStory(estimation: IEstimation): Promise<DocumentReference> {
+    return this.angularFirestoreService.collection('Estimations').add({ ...estimation });
+  }
+  public updateEstimationForStory(estimationId: string, estimation: string): Promise<void> {
+    return this.angularFirestoreService.doc(`Estimations/${estimationId}`).update({ estimation });
+  }
+
+  public getEstimationForCurrentStoryAndUser(storyId: string, user: string): AngularFirestoreCollection<any> {
+    return this.angularFirestoreService.collection('Estimations', ref => {
+      return ref
+        .where('estimator', '==', user)
+        .where('storyId', '==', storyId);
+    });
+  }
+
 }

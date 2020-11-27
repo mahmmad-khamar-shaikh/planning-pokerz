@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentReference } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionInformationService } from 'src/app/services/session-information.service';
 import { StoryService } from 'src/app/services/story.service';
+import { IStory } from 'src/app/types/shared.interface';
 
 @Component({
   selector: 'app-story-selection',
@@ -10,7 +12,9 @@ import { StoryService } from 'src/app/services/story.service';
   styleUrls: ['./story-selection.component.scss']
 })
 export class StorySelectionComponent implements OnInit {
-  adminForm: FormGroup;
+  storyForm: FormGroup;
+  private currentMeetingId: string;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -20,18 +24,21 @@ export class StorySelectionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.adminForm = this.fb.group({
+    this.storyForm = this.fb.group({
       storyName: [this.sessionInformationService.getSessionInformation.currentStory || '', Validators.required]
     });
+    console.log(`current storytid ${this.sessionInformationService.getSessionInformation.currentStoryId}`);
     this.storyService.currentStoy(this.sessionInformationService.getSessionInformation.currentStoryId)
       .valueChanges().subscribe(data => {
         console.log(`data ${data}`);
       });
+
+    this.currentMeetingId = this.sessionInformationService.getSessionInformation.meetingId;
   }
   isFieldInvalid(field: string): boolean {
     return (
-      (!this.adminForm.get(field).valid && this.adminForm.get(field).touched) ||
-      (this.adminForm.get(field).untouched)
+      (!this.storyForm.get(field).valid && this.storyForm.get(field).touched) ||
+      (this.storyForm.get(field).untouched)
     );
   }
 
@@ -39,10 +46,30 @@ export class StorySelectionComponent implements OnInit {
     this.router.navigate(['/home/dashboard-admin']);
   }
   startEstimation = () => {
-
-    this.goBackToBoard();
+    const storyIdToBeEstimated = this.storyForm.get('storyName').value;
+    if (!storyIdToBeEstimated) {
+      return;
+    }
+    const story: IStory = {
+      storyName: storyIdToBeEstimated,
+      meetingId: this.currentMeetingId,
+      isEstimationClosed: false
+    };
+    console.log(`opening session for meetingId ${this.currentMeetingId}`);
+    this.storyService.openSessionForStory(story).then((data: DocumentReference) => {
+      console.log(`session opened for story : ${data.id}`);
+      this.goBackToBoard();
+    }).catch(err => console.log(`error occurred while opening session ${err}`));
   }
   closeEstimation = () => {
-    this.goBackToBoard();
+    this.storyService
+      .closeSessionForStory(this.sessionInformationService.getSessionInformation.currentStoryId)
+      .then(() => {
+        console.log(`closing session for sotry ${this.sessionInformationService.getSessionInformation.currentStoryId} successful `);
+        this.sessionInformationService.setCurrentStory = '';
+        this.sessionInformationService.setCurrentStoryId = '';
+        this.storyForm.patchValue({ storyName: '' });
+      })
+      .catch(err => console.log(`error occured while closeing story estimation ${err}`));
   }
 }

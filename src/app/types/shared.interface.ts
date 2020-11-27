@@ -19,9 +19,23 @@ export interface ICeremony {
 
 export interface IMeeting {
   ceremonyId: string;
+  teamId: string;
   meetingStartedDateTime: Date;
   meetingEndedDateTime?: Date;
   startedBy?: string;
   endedBy?: string;
   isMeetingLive: boolean;
+}
+
+export interface IStory {
+  meetingId: string;
+  isEstimationClosed: boolean;
+  storyName: string;
+}
+
+export interface IEstimation {
+  estimation: string;
+  estimator: string;
+  storyId: string;
+
 }

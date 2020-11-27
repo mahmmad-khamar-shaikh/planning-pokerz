@@ -17,11 +17,12 @@ export class MeetingService {
     return this.angularFirestoreService.collection('Meetings', ref => {
       return ref
         .where('ceremonyId', '==', this.sessionInformationService.getSessionInformation.ceremonyId)
+        .where('teamId', '==', this.sessionInformationService.getSessionInformation.teamId)
         .where('isMeetingLive', '==', true);
     });
   }
-  endMeeting(meetingId: string): void {
-    this.angularFirestoreService.doc(`Meetings/${meetingId}`).update({ isMeetingLive: false });
+  endMeeting(meetingId: string, endedBy: string): void {
+    this.angularFirestoreService.doc(`Meetings/${meetingId}`).update({ isMeetingLive: false, endedBy });
   }
   startMeeting(meetingData: IMeeting): Promise<DocumentReference> {
     return this.angularFirestoreService.collection('Meetings').add({ ...meetingData });
