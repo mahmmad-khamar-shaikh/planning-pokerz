@@ -29,6 +29,7 @@ const homeScreenChildren: Routes = [
   { path: 'retro-dashboard', component: RetroDashboardComponent },
   { path: 'scrum-dashboard', component: ScrumDashboardComponent },
   { path: 'story-selection', component: StorySelectionComponent },
+  { path: 'dashboard-po', component: LimitedDashboardComponent },
   { path: '', redirectTo: 'team', pathMatch: 'full' }
 ];
 

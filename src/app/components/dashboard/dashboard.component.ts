@@ -46,50 +46,53 @@ export class DashboardComponent implements OnInit {
 
 
 
-    this.meetingService.liveMeeting.snapshotChanges().pipe(map(actions => {
-      return actions.map(this.utilService.dbToDomanEntity);
-    })).subscribe(d => {
-      d.map(t => {
-        this.isMeetingLive = t.isMeetingLive;
-        this.currentMeetingId = t.id;
-        this.sessionInformationService.setMeeting = this.currentMeetingId;
-        console.log(`Meeting ID ${t.id}`);
-        console.log(`ceremony ID ${t.ceremonyId}`);
-        this.storyService.currentStoy(t.id).snapshotChanges().pipe(map(actions => {
+    this.meetingService.liveMeeting
+      .snapshotChanges()
+      .pipe(
+        map(actions => {
           return actions.map(this.utilService.dbToDomanEntity);
-        })).subscribe(data => {
-          let currentStoryFound = false;
-          data.map(v => {
-            console.log(`stories data arrived ${v.storyName}`);
-            if (!v.isEstimationClosed) {
-              currentStoryFound = true;
-              this.storyNumber = v.storyName;
-              this.sessionInformationService.setCurrentStory = this.storyNumber;
-              this.sessionInformationService.setCurrentStoryId = v.id;
+        })).subscribe(d => {
+          d.map(t => {
+            this.isMeetingLive = t.isMeetingLive;
+            this.currentMeetingId = t.id;
+            this.sessionInformationService.setMeeting = this.currentMeetingId;
+            console.log(`Meeting ID ${t.id}`);
+            console.log(`ceremony ID ${t.ceremonyId}`);
+            this.storyService.currentStoy(t.id).snapshotChanges().pipe(map(actions => {
+              return actions.map(this.utilService.dbToDomanEntity);
+            })).subscribe(data => {
+              let currentStoryFound = false;
+              data.map(v => {
+                console.log(`stories data arrived ${v.storyName}`);
+                if (!v.isEstimationClosed) {
+                  currentStoryFound = true;
+                  this.storyNumber = v.storyName;
+                  this.sessionInformationService.setCurrentStory = this.storyNumber;
+                  this.sessionInformationService.setCurrentStoryId = v.id;
 
-              this.storyService.getEstimationForCurrentStoryAndUser(v.id, this.userName)
-                .snapshotChanges()
-                .pipe(
-                  map(actions => {
-                    return actions.map(this.utilService.dbToDomanEntity);
-                  }))
-                .subscribe(estimationData => {
-                  estimationData.map(e => {
-                    console.log(`esitmation data for user arrirved ${e.id}`);
-                    this.currentEstimationId = e.id;
-                  });
-                });
-            }
+                  this.storyService.getEstimationForCurrentStoryAndUser(v.id, this.userName)
+                    .snapshotChanges()
+                    .pipe(
+                      map(actions => {
+                        return actions.map(this.utilService.dbToDomanEntity);
+                      }))
+                    .subscribe(estimationData => {
+                      estimationData.map(e => {
+                        console.log(`esitmation data for user arrirved ${e.id}`);
+                        this.currentEstimationId = e.id;
+                      });
+                    });
+                }
+              });
+              if (!currentStoryFound) {
+                // reset story values
+                this.storyNumber = '';
+                this.sessionInformationService.setCurrentStory = '';
+                this.sessionInformationService.setCurrentStoryId = '';
+              }
+            });
           });
-          if (!currentStoryFound) {
-            // reset story values
-            this.storyNumber = '';
-            this.sessionInformationService.setCurrentStory = '';
-            this.sessionInformationService.setCurrentStoryId = '';
-          }
         });
-      });
-    });
 
 
   }

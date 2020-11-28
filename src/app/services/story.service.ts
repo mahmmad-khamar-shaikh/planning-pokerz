@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { promise } from 'protractor';
+import { map } from 'rxjs/operators';
 import { IEstimation, IStory } from '../types/shared.interface';
+import { MeetingService } from './meeting.service';
+import { SessionInformationService } from './session-information.service';
+import { UtilService } from './util.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoryService {
+  private estimationsCollection: IEstimation[] = [];
 
   constructor(
-    private angularFirestoreService: AngularFirestore
+    private angularFirestoreService: AngularFirestore,
+
   ) { }
 
   public currentStoy(meetingId: string): AngularFirestoreCollection<any> {
@@ -43,6 +49,13 @@ export class StoryService {
     return this.angularFirestoreService.collection('Estimations', ref => {
       return ref
         .where('estimator', '==', user)
+        .where('storyId', '==', storyId);
+    });
+  }
+
+  public getAllEstimationForCurrentStory(storyId: string): AngularFirestoreCollection<any> {
+    return this.angularFirestoreService.collection('Estimations', ref => {
+      return ref
         .where('storyId', '==', storyId);
     });
   }
