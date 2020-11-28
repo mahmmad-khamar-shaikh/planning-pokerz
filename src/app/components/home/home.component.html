@@ -8,11 +8,8 @@
         <div>Scrum Ceremony</div>
         <div style="font-size: 12px;" *ngIf="user?.length>0"> welcome {{user}} ! </div>
     </div>
-
     <div style="font-size: 12px; cursor: pointer;">
-
-
-        <fa-icon class="normal" size="lg" [routerLink]="['/login/signin']" [icon]="signOutIcon"> </fa-icon>
+        <fa-icon class="normal" size="lg" (click)="logout()" [icon]="signOutIcon"> </fa-icon>
     </div>
 
 </mat-toolbar>

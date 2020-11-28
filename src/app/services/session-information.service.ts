@@ -10,14 +10,7 @@ export class SessionInformationService {
   private sessionObject: ISession;
   public storyNameSubect = new BehaviorSubject<string>('');
   constructor() {
-    this.sessionObject = {
-      meetingId: '',
-      ceremonyId: '',
-      teamId: '',
-      currentStory: '',
-      currentStoryId: '',
-      userInfo: {}
-    };
+    this.clearSessionObject();
   }
   get getSessionInformation(): ISession {
     return this.sessionObject;
@@ -45,6 +38,16 @@ export class SessionInformationService {
   }
   get getStoryNameSubject(): Observable<string> {
     return this.storyNameSubect;
+  }
+  clearSessionObject(): void {
+    this.sessionObject = {
+      meetingId: '',
+      ceremonyId: '',
+      teamId: '',
+      currentStory: '',
+      currentStoryId: '',
+      userInfo: {}
+    };
   }
   set setStoryNameSubject(storyName: string) {
     this.storyNameSubect.next(storyName);
