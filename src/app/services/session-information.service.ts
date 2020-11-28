@@ -8,7 +8,8 @@ import { IUser } from '../types/user.interface';
 })
 export class SessionInformationService {
   private sessionObject: ISession;
-  public storyNameSubect = new BehaviorSubject<string>('');
+  public storyNameSubject = new BehaviorSubject<string>('');
+  public showLoaderSubject = new BehaviorSubject<boolean>(false);
   constructor() {
     this.clearSessionObject();
   }
@@ -37,7 +38,7 @@ export class SessionInformationService {
     this.sessionObject.currentStoryId = storyId;
   }
   get getStoryNameSubject(): Observable<string> {
-    return this.storyNameSubect;
+    return this.storyNameSubject;
   }
   clearSessionObject(): void {
     this.sessionObject = {
@@ -50,7 +51,10 @@ export class SessionInformationService {
     };
   }
   set setStoryNameSubject(storyName: string) {
-    this.storyNameSubect.next(storyName);
+    this.storyNameSubject.next(storyName);
+  }
+  set showHideLoader(isVisible: boolean) {
+    this.showLoaderSubject.next(isVisible);
   }
 
 }

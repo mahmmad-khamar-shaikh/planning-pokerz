@@ -1,37 +1,45 @@
-import { Component } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { Component, OnInit } from '@angular/core';
 import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { timeout } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { SessionInformationService } from './services/session-information.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'static';
-  loading = false;
+  loading: Observable<boolean>;
 
   /**
    *
    */
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private sessionInformationService: SessionInformationService
+  ) {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart:
-          this.loading = true;
+          this.loading = of(true);
           break;
         case event instanceof NavigationCancel:
         case event instanceof NavigationEnd:
         case event instanceof NavigationError: {
-          this.loading = false;
+          this.loading = of(false);
           break;
         }
         default:
           break;
       }
     });
+
+  }
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.loading = this.sessionInformationService.showLoaderSubject;
+    }, 2000);
 
   }
 }
