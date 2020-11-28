@@ -1,19 +1,25 @@
 <div class="limited-dashboard">
     <mat-card>
         <mat-card-content>
-            <div class="limited-dashboard">
+            <div class="limited-dashboard title-text">
+
                 <mat-chip-list *ngFor="let story of storyPointCollection">
                     <mat-chip class="story-point-chip">
                         <span matBadge="{{story.storyPoint}}" matBadgeOverlap="false">{{story.userName}}</span>
                     </mat-chip>
                 </mat-chip-list>
+
+                <ng-template *ngIf="storyName |async ">
+                    <mat-progress-spinner></mat-progress-spinner>
+
+                </ng-template>
             </div>
             <mat-divider></mat-divider>
-            <div class="limited-dashboard title-text" *ngIf="userNotSureCollection">
+            <div class="limited-dashboard title-text" *ngIf="userNotSureCollection.length>0">
                 Team Members who are not sure !
             </div>
-            <div class="limited-dashboard title-text" *ngIf="!userNotSureCollection">
-                <span> Good, Team understands story.</span>
+            <div class="limited-dashboard title-text" *ngIf="!(userNotSureCollection.length>0)">
+                {{storyName ? 'Good, Team understands story!' : 'No Story Selected'}}
             </div>
             <div class="limited-dashboard">
                 <mat-chip-list *ngFor="let userNotSure of userNotSureCollection">
@@ -24,11 +30,11 @@
                 </mat-chip-list>
             </div>
             <mat-divider></mat-divider>
-            <div class="limited-dashboard title-text" *ngIf="userStillHaveADoubt">
+            <div class="limited-dashboard title-text" *ngIf="userStillHaveADoubt.length>0">
                 Still have a doubt
             </div>
-            <div class="limited-dashboard title-text" *ngIf="!userStillHaveADoubt">
-                <span> Good, Team has no doubt ! </span>
+            <div class="limited-dashboard title-text" *ngIf="!(userStillHaveADoubt.length>0)">
+                <span> {{storyName ? 'Good, Team has no doubt ! ' : 'No Story Selected'}} </span>
             </div>
             <div class="limited-dashboard">
                 <mat-chip-list *ngFor="let userWithDoubt of userStillHaveADoubt">

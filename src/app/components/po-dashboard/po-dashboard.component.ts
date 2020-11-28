@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { SessionInformationService } from 'src/app/services/session-information.service';
 
 @Component({
   selector: 'app-po-dashboard',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./po-dashboard.component.scss']
 })
 export class PoDashboardComponent implements OnInit {
+  public storyName: Observable<string>;
 
-  constructor() { }
+  constructor(private sessionServiceInformation: SessionInformationService) { }
 
   ngOnInit(): void {
+    this.storyName = this.sessionServiceInformation.getStoryNameSubject;
   }
 
 }

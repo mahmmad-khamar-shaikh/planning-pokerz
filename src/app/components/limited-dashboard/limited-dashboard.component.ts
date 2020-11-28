@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MeetingService } from 'src/app/services/meeting.service';
 import { SessionInformationService } from 'src/app/services/session-information.service';
@@ -16,6 +17,7 @@ export class LimitedDashboardComponent implements OnInit {
   public userNotSureCollection: IStoryPointChoice[] = [];
   public userStillHaveADoubt: IStoryPointChoice[] = [];
   private estimationCollection: IEstimation[];
+  public storyName: Observable<string>;
   constructor(
     private sessionInformationService: SessionInformationService,
     private storyService: StoryService,
@@ -27,6 +29,7 @@ export class LimitedDashboardComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     console.log(`estimation being fetched for current story ${this.sessionInformationService.getSessionInformation.currentStoryId}`);
+    this.storyName = this.sessionInformationService.getStoryNameSubject;
     this.fetchLiveEstimations();
   }
 
@@ -49,8 +52,10 @@ export class LimitedDashboardComponent implements OnInit {
               let currentStoryFound = false;
               data.map(v => {
                 console.log(`stories data arrived ${v.storyName}`);
+
                 if (!v.isEstimationClosed) {
                   currentStoryFound = true;
+                  this.sessionInformationService.setStoryNameSubject = v.storyName;
                   this.sessionInformationService.setCurrentStory = v.storyName;
                   this.sessionInformationService.setCurrentStoryId = v.id;
                 }

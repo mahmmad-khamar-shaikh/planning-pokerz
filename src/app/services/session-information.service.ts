@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ISession } from '../types/session.interface';
 import { IUser } from '../types/user.interface';
 
@@ -7,6 +8,7 @@ import { IUser } from '../types/user.interface';
 })
 export class SessionInformationService {
   private sessionObject: ISession;
+  public storyNameSubect = new BehaviorSubject<string>('');
   constructor() {
     this.sessionObject = {
       meetingId: '',
@@ -41,4 +43,11 @@ export class SessionInformationService {
   set setCurrentStoryId(storyId: string) {
     this.sessionObject.currentStoryId = storyId;
   }
+  get getStoryNameSubject(): Observable<string> {
+    return this.storyNameSubect;
+  }
+  set setStoryNameSubject(storyName: string) {
+    this.storyNameSubect.next(storyName);
+  }
+
 }
