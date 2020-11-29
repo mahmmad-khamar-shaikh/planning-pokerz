@@ -12,6 +12,10 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
+
+/** Application component */
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -72,7 +76,8 @@ import { StorySelectionComponent } from './components/estimation/story-selection
     AppMaterialModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    AngularFireAuthModule
 
   ],
   providers: [],

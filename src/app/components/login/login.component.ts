@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {faGithub, faGoogle, faMicrosoft} from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faGoogle, faMicrosoft } from '@fortawesome/free-brands-svg-icons';
+import { AuthService } from 'src/app/services/auth.service';
+import { SessionInformationService } from 'src/app/services/session-information.service';
+import { IUser } from 'src/app/types/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private authService: AuthService,
+    private sessionInformationService: SessionInformationService
   ) {
   }
   ngOnInit(): void {
@@ -47,6 +52,40 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(): void {
     // To be Implemented
+
+  }
+
+  loginWithGoogle(): void {
+    this.authService.googleSignin()
+      .then((data) => {
+        this.setUserSessionData(data);
+        this.router.navigate(['/home']);
+      });
+  }
+  loginWithGithub(): void {
+    this.authService.githubSignin()
+      .then((data) => {
+        this.setUserSessionData(data);
+        this.router.navigate(['/home']);
+      });
+  }
+
+  loginWithMS(): void {
+    this.authService.microsoftSignin()
+      .then((data) => {
+        this.setUserSessionData(data);
+        this.router.navigate(['/home']);
+      });
+  }
+
+  setUserSessionData(data): void {
+    const userObject: IUser = {
+      displayName: data.user.displayName,
+      email: data.user.email,
+      photoURL: data.user.photoURL,
+      uid: data.user.uid,
+    };
+    this.sessionInformationService.setUserInformation = userObject;
 
   }
 

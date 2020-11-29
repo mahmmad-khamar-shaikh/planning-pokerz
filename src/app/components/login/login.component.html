@@ -23,18 +23,18 @@
             </form> -->
 
             <div>
-                <button mat-stroked-button color="primary">
+                <button mat-stroked-button color="primary" (click)="loginWithGoogle()">
           <fa-icon [icon]="googleIcon"></fa-icon> Login with Google
         </button>
             </div>
             <div>
-                <button mat-stroked-button color="primary">
+                <button mat-stroked-button color="primary" (click)="loginWithGithub()">
           <fa-icon [icon]="githubIcon"></fa-icon> Login with GitHub !
         </button>
 
             </div>
             <div>
-                <button mat-stroked-button color="primary">
+                <button mat-stroked-button color="primary" (click)="loginWithMS()">
           <fa-icon [icon]="microsoftIcon"></fa-icon> Login with Microsoft
         </button>
             </div>
