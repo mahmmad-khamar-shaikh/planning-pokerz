@@ -67,6 +67,7 @@ export class DashboardComponent implements OnInit {
                 if (!v.isEstimationClosed) {
                   currentStoryFound = true;
                   this.storyNumber = v.storyName;
+                  this.snackBar.open('You are currently Estimating', this.storyNumber, { duration: 3000 });
                   this.sessionInformationService.setCurrentStory = this.storyNumber;
                   this.sessionInformationService.setCurrentStoryId = v.id;
 
@@ -129,6 +130,7 @@ export class DashboardComponent implements OnInit {
     this.meetingService.startMeeting(meetingData).then((docRef: DocumentReference) => {
       this.currentMeetingId = docRef.id;
       this.sessionInformationService.setMeeting = this.currentMeetingId;
+      this.snackBar.open('Your Meeting Started', this.currentMeetingId, { duration: 3000 })
     }).catch(err => {
       this.snackBar.open(`Error occured : ${err}`, '', { duration: 2000 });
     });
@@ -137,7 +139,13 @@ export class DashboardComponent implements OnInit {
     if (!this.isMeetingLive) {
       return;
     }
-    this.meetingService.endMeeting(this.currentMeetingId, this.sessionInformationService.getUserInformation.name);
+    this.meetingService.endMeeting(this.currentMeetingId, this.sessionInformationService.getUserInformation.name)
+      .then(sucess => {
+        this.snackBar.open('Meeting ended by', '', { duration: 2000 });
+      })
+      .catch(err => {
+        this.snackBar.open('Error while closing meeting', '', { duration: 2000 });
+      });
     this.router.navigate(['/home/ceremony']);
   }
 

@@ -21,8 +21,8 @@ export class MeetingService {
         .where('isMeetingLive', '==', true);
     });
   }
-  endMeeting(meetingId: string, endedBy: string): void {
-    this.angularFirestoreService.doc(`Meetings/${meetingId}`).update({ isMeetingLive: false, endedBy });
+  endMeeting(meetingId: string, endedBy: string): Promise<void> {
+    return this.angularFirestoreService.doc(`Meetings/${meetingId}`).update({ isMeetingLive: false, endedBy });
   }
   startMeeting(meetingData: IMeeting): Promise<DocumentReference> {
     return this.angularFirestoreService.collection('Meetings').add({ ...meetingData });

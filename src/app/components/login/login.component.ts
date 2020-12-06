@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { faGithub, faGoogle, faMicrosoft } from '@fortawesome/free-brands-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private sessionInformationService: SessionInformationService
+    private sessionInformationService: SessionInformationService,
+    private snackBar: MatSnackBar
   ) {
   }
   ngOnInit(): void {
@@ -48,6 +50,8 @@ export class LoginComponent implements OnInit {
     //   email: this.loginFormGroup.get('userName').value,
     //   id: 1
     // };
+
+    this.snackBar.open('Welcome to Scrum Cermony', '', { duration: 2000 });
     this.router.navigate(['/home']);
   }
   onSubmit(): void {
@@ -58,8 +62,13 @@ export class LoginComponent implements OnInit {
   loginWithGoogle(): void {
     this.authService.googleSignin()
       .then((data) => {
+        this.snackBar.open('Welcome to Scrum Cermony', '', { duration: 2000 });
         this.setUserSessionData(data);
         this.router.navigate(['/home']);
+      })
+      .catch(err => {
+        this.snackBar.open(`Error Connectiing to your google account.`, '', { duration: 2000 });
+        console.log(`error => ${err}`);
       });
   }
   loginWithGithub(): void {
@@ -67,6 +76,10 @@ export class LoginComponent implements OnInit {
       .then((data) => {
         this.setUserSessionData(data);
         this.router.navigate(['/home']);
+      })
+      .catch(err => {
+        this.snackBar.open(`Error Connectiing to your GitHub account.`, '', { duration: 2000 });
+        console.log(`error => ${err}`);
       });
   }
 
