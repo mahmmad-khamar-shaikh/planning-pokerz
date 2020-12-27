@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { SessionInformationService } from 'src/app/services/session-information.service';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-team',
@@ -13,14 +14,21 @@ import { UtilService } from 'src/app/services/util.service';
 export class TeamComponent implements OnInit {
 
   teams$: any;
+
+
+
   constructor(
     private teamService: TeamService,
     private sessionService: SessionInformationService,
     private router: Router,
-    private utilService: UtilService
+    private utilService: UtilService,
+
+
   ) { }
 
   ngOnInit(): void {
+
+
     this.sessionService.showHideLoader = true;
     this.teamService.getTeamCollection.snapshotChanges().pipe(
       map(changes =>
@@ -36,4 +44,10 @@ export class TeamComponent implements OnInit {
     this.sessionService.setSessionTeam = teamId;
     this.router.navigate(['/home/ceremony']);
   }
+  navigateAddTeam(): void {
+    this.router.navigate(['/home/addTeam'])
+
+  }
+
+
 }

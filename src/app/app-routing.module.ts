@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddTeamComponent } from './components/add-team/add-team.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AvtarComponent } from './components/avtar/avtar.component';
 import { CeremonyComponent } from './components/ceremony/ceremony.component';
@@ -23,6 +24,7 @@ const loginScreenChildren: Routes = [
 const homeScreenChildren: Routes = [
   { path: 'avtar', component: AvtarComponent },
   { path: 'team', component: TeamComponent },
+  { path: 'addTeam', component: AddTeamComponent },
   { path: 'ceremony', component: CeremonyComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard-admin', component: AdminDashboardComponent },

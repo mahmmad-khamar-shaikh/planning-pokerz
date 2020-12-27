@@ -43,6 +43,7 @@ import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-sv
 
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { StorySelectionComponent } from './components/estimation/story-selection/story-selection.component';
+import { AddTeamComponent } from './components/add-team/add-team.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { StorySelectionComponent } from './components/estimation/story-selection
     UnderContructionComponent,
     LimitedDashboardComponent,
     PoDashboardComponent,
-    StorySelectionComponent
+    StorySelectionComponent,
+    AddTeamComponent
   ],
   imports: [
     BrowserModule,
