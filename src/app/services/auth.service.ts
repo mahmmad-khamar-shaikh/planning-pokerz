@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import firebase from 'firebase/app';
+import {  } from 'firebase';
 import {
   AngularFirestore,
   AngularFirestoreDocument
@@ -37,22 +38,22 @@ export class AuthService {
 
   }
 
-  async googleSignin(): Promise<auth.UserCredential> {
-    const provider = new auth.GoogleAuthProvider();
+  async googleSignin(): Promise<firebase.auth.UserCredential> {
+    const provider = new firebase.auth.GoogleAuthProvider();
     return await this.afAuth.signInWithPopup(provider);
 
     // return this.updateUserData(credentials.user);
   }
 
-  async githubSignin(): Promise<auth.UserCredential> {
-    const provider = new auth.GithubAuthProvider();
+  async githubSignin(): Promise<firebase.auth.UserCredential> {
+    const provider = new firebase.auth.GithubAuthProvider();
     return await this.afAuth.signInWithPopup(provider);
 
     // return this.updateUserData(credentials.user);
   }
 
-  async microsoftSignin(): Promise<auth.UserCredential> {
-    const provider = new auth.OAuthProvider('microsoft.com');
+  async microsoftSignin(): Promise<firebase.auth.UserCredential> {
+    const provider = new firebase.auth.OAuthProvider('microsoft.com');
     return await this.afAuth.signInWithPopup(provider);
 
     // return this.updateUserData(credentials.user);
