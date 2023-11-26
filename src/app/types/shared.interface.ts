@@ -35,7 +35,7 @@ export interface IStory {
 
 export interface IEstimation {
   estimation: string;
-  estimator: string;
+  estimator: string |undefined;
   storyId: string;
 
 }

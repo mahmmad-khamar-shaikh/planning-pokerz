@@ -45,7 +45,7 @@ export class StoryService {
     return this.angularFirestoreService.doc(`Estimations/${estimationId}`).update({ estimation });
   }
 
-  public getEstimationForCurrentStoryAndUser(storyId: string, user: string): AngularFirestoreCollection<any> {
+  public getEstimationForCurrentStoryAndUser(storyId: string, user: string | undefined): AngularFirestoreCollection<any> {
     return this.angularFirestoreService.collection('Estimations', ref => {
       return ref
         .where('estimator', '==', user)

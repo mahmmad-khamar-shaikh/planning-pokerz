@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, DocumentChangeAction, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentChangeAction, DocumentReference } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,8 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DashboardComponent implements OnInit {
 
-  public role: string;
-  public userName: string;
+  public role: string |undefined;
+  public userName: string | undefined;
   public cardValue: ICardValue = { type: '', value: '' };
   public storyNumber: string;
   public arrayStoryNumber = ['0', '2', '3', '5', '8', '13'];
@@ -139,7 +139,7 @@ export class DashboardComponent implements OnInit {
     if (!this.isMeetingLive) {
       return;
     }
-    this.meetingService.endMeeting(this.currentMeetingId, this.sessionInformationService.getUserInformation.name)
+    this.meetingService.endMeeting(this.currentMeetingId, this.sessionInformationService?.getUserInformation?.name)
       .then(sucess => {
         this.snackBar.open('Meeting ended by', '', { duration: 2000 });
       })
