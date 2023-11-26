@@ -10,9 +10,9 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 
 /** Angular Fire / FireBase Dependency  */
 
-import { AngularFireModule} from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import {AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireModule} from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 
 
 /** Application component */

@@ -5,7 +5,7 @@ import { IUser } from '../types/user.interface';
   providedIn: 'root'
 })
 export class LoginInfoService {
-  private User: IUser;
+  private User: IUser = {} ;
 
   constructor() { }
 

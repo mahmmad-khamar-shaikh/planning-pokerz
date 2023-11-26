@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
 import { ITeams } from '../types/shared.interface';
 import { DALService } from './dal.service';
 
@@ -16,7 +16,7 @@ export class TeamService {
     return this.dalServiceRef.getCollection(teamPath);
   }
   public addTeam(teamName: string): Promise<DocumentReference> {
-    return this.angularFirestoreService.collection('Teams').add({
+    return this.angularFirestoreService.collection<any>('Teams').add({
       teamName: teamName
     });
   }

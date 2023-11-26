@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { SessionInformationService } from './services/session-information.service';
@@ -10,7 +10,7 @@ import { SessionInformationService } from './services/session-information.servic
 })
 export class AppComponent implements OnInit {
   title = 'static';
-  loading: Observable<boolean>;
+  loading: Observable<boolean> ;
 
   /**
    *

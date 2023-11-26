@@ -27,15 +27,15 @@ export class AddTeamComponent implements OnInit {
     });
   }
 
-  isFieldInvalid(field: string): boolean {
+  isFieldInvalid(field: string): boolean | undefined{
     return (
-      (!this.teamForm.get(field).valid && this.teamForm.get(field).touched) ||
-      (this.teamForm.get(field).untouched)
+      (!this?.teamForm?.get(field)?.valid && this.teamForm?.get(field)?.touched) ||
+      (this.teamForm?.get(field)?.untouched)
     );
   }
 
   save(): void {
-    const teamName = this.teamForm.get('teamName').value;
+    const teamName = this.teamForm?.get('teamName')?.value;
 
     this.teamService.checkTeamExists(teamName)
       .snapshotChanges()

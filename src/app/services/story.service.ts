@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/compat/firestore';
 import { promise } from 'protractor';
 import { map } from 'rxjs/operators';
 import { IEstimation, IStory } from '../types/shared.interface';
@@ -31,7 +31,7 @@ export class StoryService {
   }
 
   public openSessionForStory(storyInfo: IStory): Promise<DocumentReference> {
-    return this.angularFirestoreService.collection('Stories').add({ ...storyInfo });
+    return this.angularFirestoreService.collection<any>('Stories').add({ ...storyInfo });
   }
   public closeSessionForStory(storyId: string): Promise<void> {
 
@@ -39,7 +39,7 @@ export class StoryService {
   }
 
   public addEstimationForStory(estimation: IEstimation): Promise<DocumentReference> {
-    return this.angularFirestoreService.collection('Estimations').add({ ...estimation });
+    return this.angularFirestoreService.collection<any>('Estimations').add({ ...estimation });
   }
   public updateEstimationForStory(estimationId: string, estimation: string): Promise<void> {
     return this.angularFirestoreService.doc(`Estimations/${estimationId}`).update({ estimation });

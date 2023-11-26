@@ -25,20 +25,20 @@ export class AvtarComponent implements OnInit {
       avtarRole: ['']
     });
   }
-  isFieldInvalid(field: string): boolean {
+  isFieldInvalid(field: string): boolean | undefined{
     return (
-      (!this.avtarForm.get(field).valid && this.avtarForm.get(field).touched) ||
-      (this.avtarForm.get(field).untouched)
+      (!this.avtarForm?.get(field)?.valid && this.avtarForm?.get(field)?.touched) ||
+      (this.avtarForm?.get(field)?.untouched)
     );
   }
 
   public toDashboard(): void {
 
-    const selctedAvtar = this.avtarForm.get('avtarRole').value as Avtar;
+    const selctedAvtar = this.avtarForm?.get('avtarRole')?.value as Avtar;
 
     const userObject: IUser = {
       role: selctedAvtar,
-      name: this.avtarForm.get('displayName').value
+      name: this.avtarForm?.get('displayName')?.value
     };
     this.sessionInformationService.setUserInformation = userObject;
     switch (selctedAvtar.toString()) {

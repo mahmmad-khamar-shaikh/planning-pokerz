@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+  DocumentReference
+} from '@angular/fire/compat/firestore';
 import { IMeeting } from '../types/shared.interface';
 import { SessionInformationService } from './session-information.service';
 
@@ -25,6 +30,6 @@ export class MeetingService {
     return this.angularFirestoreService.doc(`Meetings/${meetingId}`).update({ isMeetingLive: false, endedBy });
   }
   startMeeting(meetingData: IMeeting): Promise<DocumentReference> {
-    return this.angularFirestoreService.collection('Meetings').add({ ...meetingData });
+    return this.angularFirestoreService.collection<any>('Meetings').add({ ...meetingData });
   }
 }

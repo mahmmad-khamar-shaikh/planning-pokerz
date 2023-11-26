@@ -7,7 +7,7 @@ import { IUser } from '../types/user.interface';
   providedIn: 'root'
 })
 export class SessionInformationService {
-  private sessionObject: ISession;
+  private sessionObject: ISession ;
   public storyNameSubject = new BehaviorSubject<string>('');
   public showLoaderSubject = new BehaviorSubject<boolean>(false);
   constructor() {

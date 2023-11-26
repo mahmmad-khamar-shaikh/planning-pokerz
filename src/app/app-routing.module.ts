@@ -1,4 +1,4 @@
-import { Route } from '@angular/compiler/src/core';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddTeamComponent } from './components/add-team/add-team.component';

@@ -17,7 +17,7 @@
         </mat-card-content>
         <mat-card-actions align="center">
             <button mat-raised-button color="primary" [disabled]="isFieldInvalid('displayName')" (click)="toDashboard()">
-        Join as {{avtarForm.get('avtarRole').value}}
+        Join as {{avtarForm.get('avtarRole')?.value}}
       </button>
 
         </mat-card-actions>
