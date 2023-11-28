@@ -35,10 +35,10 @@ export class StorySelectionComponent implements OnInit {
 
     this.currentMeetingId = this.sessionInformationService.getSessionInformation.meetingId;
   }
-  isFieldInvalid(field: string): boolean {
+  isFieldInvalid(field: string): boolean | undefined {
     return (
-      (!this.storyForm.get(field).valid && this.storyForm.get(field).touched) ||
-      (this.storyForm.get(field).untouched)
+      (!this.storyForm?.get(field)?.valid && this.storyForm?.get(field)?.touched) ||
+      (this.storyForm?.get(field)?.untouched)
     );
   }
 
@@ -46,7 +46,7 @@ export class StorySelectionComponent implements OnInit {
     this.router.navigate(['/home/dashboard-admin']);
   }
   startEstimation = () => {
-    const storyIdToBeEstimated = this.storyForm.get('storyName').value;
+    const storyIdToBeEstimated = this.storyForm?.get('storyName')?.value;
     if (!storyIdToBeEstimated) {
       return;
     }
@@ -56,10 +56,10 @@ export class StorySelectionComponent implements OnInit {
       isEstimationClosed: false
     };
     console.log(`opening session for meetingId ${this.currentMeetingId}`);
-    this.storyService.openSessionForStory(story).then((data: DocumentReference) => {
-      console.log(`session opened for story : ${data.id}`);
-      this.goBackToBoard();
-    }).catch(err => console.log(`error occurred while opening session ${err}`));
+    // this.storyService.openSessionForStory(story).then((data: DocumentReference): void | PromiseLike<void>() => {
+    //   console.log(`session opened for story : ${data.id}`);
+    //   this.goBackToBoard();
+    // }).catch(err => console.log(`error occurred while opening session ${err}`));
   }
   closeEstimation = () => {
     this.storyService

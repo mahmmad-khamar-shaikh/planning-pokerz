@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public user: string;
+  public user: string | undefined;
   items: MenuItem[];
   home: MenuItem;
   isExpanded = false;
