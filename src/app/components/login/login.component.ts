@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
     });
 
   }
-  isFieldInvalid(field: string): boolean {
+  isFieldInvalid(field: string): boolean | undefined {
     return (
-      (!this.loginFormGroup.get(field).valid && this.loginFormGroup.get(field).touched) ||
-      (this.loginFormGroup.get(field).untouched && this.formSubmitAttempt)
+      (!this.loginFormGroup?.get(field)?.valid && this.loginFormGroup?.get(field)?.touched) ||
+      (this.loginFormGroup.get(field)?.untouched && this.formSubmitAttempt)
     );
   }
   login(): void {
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  setUserSessionData(data): void {
+  setUserSessionData(data: any): void {
     const userObject: IUser = {
       displayName: data.user.displayName,
       email: data.user.email,

@@ -3,8 +3,8 @@ export interface ICardValue {
   value: string;
 }
 export interface IStoryPointChoice {
-  userName: string;
-  storyPoint: string;
+  userName: string | undefined;
+  storyPoint: string | undefined;
 }
 
 export interface ITeams {
@@ -35,7 +35,7 @@ export interface IStory {
 
 export interface IEstimation {
   estimation: string;
-  estimator: string |undefined;
+  estimator: string | undefined;
   storyId: string;
 
 }
