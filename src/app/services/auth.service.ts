@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { GoogleAuthProvider } from 'firebase/auth';
-import firebase from 'firebase/compat';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
