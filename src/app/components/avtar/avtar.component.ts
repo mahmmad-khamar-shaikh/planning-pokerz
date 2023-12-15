@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Avtar } from 'src/app/types/custom.types';
 import { IUser } from 'src/app/types/user.interface';
@@ -13,9 +13,9 @@ import { SessionInformationService } from 'src/app/services/session-information.
 export class AvtarComponent implements OnInit {
 
   faArrowLeft = faBackward;
-  avtarForm: FormGroup;
+  avtarForm: UntypedFormGroup;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private sessionInformationService: SessionInformationService) { }
 

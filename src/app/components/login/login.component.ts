@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { faGithub, faGoogle, faMicrosoft } from '@fortawesome/free-brands-svg-icons';
@@ -14,7 +14,7 @@ import { IUser } from 'src/app/types/user.interface';
 })
 export class LoginComponent implements OnInit {
 
-  loginFormGroup: FormGroup;
+  loginFormGroup: UntypedFormGroup;
   public isError = false;
   public customErrorMessage: string;
   private formSubmitAttempt: boolean;
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   microsoftIcon = faMicrosoft;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private authService: AuthService,
     private sessionInformationService: SessionInformationService,

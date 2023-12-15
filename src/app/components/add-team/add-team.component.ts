@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -12,9 +12,9 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./add-team.component.scss']
 })
 export class AddTeamComponent implements OnInit {
-  teamForm: FormGroup;
+  teamForm: UntypedFormGroup;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private teamService: TeamService,
     private router: Router,
     private snacBar: MatSnackBar,

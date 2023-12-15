@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentReference } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionInformationService } from 'src/app/services/session-information.service';
 import { StoryService } from 'src/app/services/story.service';
@@ -12,11 +12,11 @@ import { IStory } from 'src/app/types/shared.interface';
   styleUrls: ['./story-selection.component.scss']
 })
 export class StorySelectionComponent implements OnInit {
-  storyForm: FormGroup;
+  storyForm: UntypedFormGroup;
   private currentMeetingId: string;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private sessionInformationService: SessionInformationService,
     private storyService: StoryService
