@@ -1,50 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-
-/** Angular Fire / FireBase Dependency  */
-
-import { AngularFireModule} from '@angular/fire/compat';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import {AngularFireAuthModule} from '@angular/fire/compat/auth';
-
-
-/** Application component */
-import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppMaterialModule } from './app-material.module';
-import { LoginContainerComponent } from './components/login-container/login-container.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AvtarComponent } from './components/avtar/avtar.component';
-import { TeamComponent } from './components/team/team.component';
-import { CeremonyComponent } from './components/ceremony/ceremony.component';
-import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-import { RetroDashboardComponent } from './components/retro-dashboard/retro-dashboard.component';
-import { ScrumDashboardComponent } from './components/scrum-dashboard/scrum-dashboard.component';
-import { UnderContructionComponent } from './components/under-contruction/under-contruction.component';
-import { LimitedDashboardComponent } from './components/limited-dashboard/limited-dashboard.component';
-import { PoDashboardComponent } from './components/po-dashboard/po-dashboard.component';
-
-
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faSquare, faCheckSquare} from '@fortawesome/free-solid-svg-icons';
-import { faSquare as farSquare, faCheckSquare as farCheckSquare   } from '@fortawesome/free-regular-svg-icons';
-import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
-
-/** PrimeNG component */
-
-import {BreadcrumbModule} from 'primeng/breadcrumb';
-import { StorySelectionComponent } from './components/estimation/story-selection/story-selection.component';
-import { AddTeamComponent } from './components/add-team/add-team.component';
-
+import { AddTeamComponent } from './add-team/add-team.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AvtarComponent } from './avtar/avtar.component';
+import { CeremonyComponent } from './ceremony/ceremony.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { StorySelectionComponent } from './estimation/story-selection/story-selection.component';
+import { HomeComponent } from './home/home.component';
+import { LoginContainerComponent } from './login-container/login-container.component';
+import { LoginComponent } from './login/login.component';
+import { PoDashboardComponent } from './po-dashboard/po-dashboard.component';
+import { RetroDashboardComponent } from './retro-dashboard/retro-dashboard.component';
+import { ScrumDashboardComponent } from './scrum-dashboard/scrum-dashboard.component';
+import { TeamComponent } from './team/team.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UnderContructionComponent } from './under-contruction/under-contruction.component';
+import { LimitedDashboardComponent } from './limited-dashboard/limited-dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment.development';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -64,29 +44,20 @@ import { AddTeamComponent } from './components/add-team/add-team.component';
     LimitedDashboardComponent,
     PoDashboardComponent,
     StorySelectionComponent,
-    AddTeamComponent
+    AddTeamComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'aungular-auth-firebase'),
-    AngularFireDatabaseModule,
-
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AppMaterialModule,
-    BrowserAnimationsModule,
+    FormsModule,
     FontAwesomeModule,
-    BreadcrumbModule,
-    AngularFireAuthModule
-
-  ],
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'angular-auth-firebase')
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(private library: FaIconLibrary) {
-    library.addIcons(faSquare, faCheckSquare, farSquare, farCheckSquare, faStackOverflow, faGithub, faMedium);
-  }
-}
+export class AppModule { }

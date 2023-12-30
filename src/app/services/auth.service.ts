@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 import { IUser } from '../types/user.interface';
-import { Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs'
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { GoogleAuthProvider } from 'firebase/auth';
@@ -16,7 +13,6 @@ import firebase from 'firebase/compat/app';
   providedIn: 'root'
 })
 export class AuthService {
-
   user$: Observable<any>;
 
   constructor(
@@ -27,8 +23,8 @@ export class AuthService {
 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
-        if (user && typeof user === "object" 
-        && "uid" in user) {
+        if (user && typeof user === "object"
+          && "uid" in user) {
           return this.afs.doc<IUser>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -64,10 +60,7 @@ export class AuthService {
     return this.router.navigate(['/home/signin']);
   }
 
-
-
-
-  updateUserData(user:any): Promise<void> {
+  updateUserData(user: any): Promise<void> {
     // TODO
 
     const userRef: AngularFirestoreDocument<IUser> = this.afs.doc(`users/${user.id}`);
@@ -79,4 +72,5 @@ export class AuthService {
     };
     return userRef.set(data, { merge: true });
   }
+
 }
